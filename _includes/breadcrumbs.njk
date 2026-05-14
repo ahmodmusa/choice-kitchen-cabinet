@@ -9,12 +9,10 @@
       {% if not bcCity and area %}
         {% set bcCity = area.city %}
       {% endif %}
-      {% if bcCity %}
+      {% if area %}
       <li class="breadcrumb-item">
         <a href="/{{ bcCity.slug }}/">{{ bcCity.name }}</a>
       </li>
-      {% endif %}
-      {% if area %}
       <li class="breadcrumb-item" aria-current="page">
         <span>{{ area.name }}</span>
       </li>
