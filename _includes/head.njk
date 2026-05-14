@@ -1,0 +1,76 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ title }} | {{ site.name }}</title>
+<meta name="description" content="{{ description }}">
+{% if city %}
+<meta name="keywords" content="kitchen cabinet {{ city.name }}, {{ city.name }} kitchen cabinets, custom kitchen {{ city.name }}, affordable kitchen cabinets Malaysia, kitchen renovation {{ city.name }}">
+{% elif area %}
+<meta name="keywords" content="kitchen cabinet {{ area.name }}, {{ area.name }} kitchen cabinets, custom kitchen {{ area.name }}, affordable kitchen cabinets Malaysia, kitchen renovation {{ area.name }}">
+{% else %}
+<meta name="keywords" content="kitchen cabinet Malaysia, custom kitchen cabinets Selangor, kitchen cabinet Klang Valley, affordable kitchen cabinets, kitchen design Malaysia, kitchen renovation, kitchen cabinet price">
+{% endif %}
+
+<!-- Open Graph -->
+<meta property="og:title" content="{{ title }} | {{ site.name }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:image" content="{{ site.url }}/assets/images/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_MY">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ title }} | {{ site.name }}">
+<meta name="twitter:description" content="{{ description }}">
+<meta name="twitter:image" content="{{ site.url }}/assets/images/og-image.png">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+
+<!-- Hreflang Tags for Multi-Language SEO -->
+<link rel="alternate" hreflang="en-MY" href="{{ site.url }}{{ page.url }}?lang=en">
+<link rel="alternate" hreflang="ms-MY" href="{{ site.url }}{{ page.url }}?lang=bm">
+<link rel="alternate" hreflang="zh-MY" href="{{ site.url }}{{ page.url }}?lang=zh">
+<link rel="alternate" hreflang="ta-MY" href="{{ site.url }}{{ page.url }}?lang=ta">
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.url }}">
+
+<!-- Preconnect for Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/assets/images/Fev.svg">
+<link rel="shortcut icon" href="/assets/images/Fev.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon-180x180.png">
+<meta name="msapplication-TileImage" content="/assets/images/favicon-144x144.png">
+<meta name="msapplication-TileColor" content="#090139">
+<meta name="theme-color" content="#090139">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WY69TY8LTH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-WY69TY8LTH');
+</script>
+
+<!-- Facebook Pixel -->
+{% if site.facebookPixelId and site.facebookPixelId != "YOUR_FACEBOOK_PIXEL_ID" %}
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '{{ site.facebookPixelId }}');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id={{ site.facebookPixelId }}&ev=PageView&noscript=1"/></noscript>
+{% endif %}

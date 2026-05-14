@@ -1,0 +1,29 @@
+{% if page.url != '/' %}
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <div class="container">
+    <ol class="breadcrumbs-list">
+      <li class="breadcrumb-item">
+        <a href="/">Home</a>
+      </li>
+      {% set bcCity = city %}
+      {% if not bcCity and area %}
+        {% set bcCity = area.city %}
+      {% endif %}
+      {% if bcCity %}
+      <li class="breadcrumb-item">
+        <a href="/{{ bcCity.slug }}/">{{ bcCity.name }}</a>
+      </li>
+      {% endif %}
+      {% if area %}
+      <li class="breadcrumb-item" aria-current="page">
+        <span>{{ area.name }}</span>
+      </li>
+      {% elif bcCity %}
+      <li class="breadcrumb-item" aria-current="page">
+        <span>{{ bcCity.name }}</span>
+      </li>
+      {% endif %}
+    </ol>
+  </div>
+</nav>
+{% endif %}

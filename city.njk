@@ -1,0 +1,111 @@
+---
+layout: default.njk
+pagination:
+  data: locations.cities
+  size: 1
+  alias: city
+permalink: "{{ city.slug }}/index.html"
+eleventyComputed:
+  title: "Kitchen Cabinets {{ city.name }} | Choice Kitchen Cabinet"
+  description: "Custom kitchen cabinets in {{ city.name }}. Premium design, delivery & installation. Free quote on WhatsApp. Trusted by 500+ families."
+---
+
+{% include 'breadcrumbs.njk' %}
+
+<section class="hero" style="min-height: 60vh;">
+  <div class="hero-text" style="grid-column: 1 / -1; text-align: center; max-width: 800px; justify-self: center;">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      <span class="badge-text"><span data-lang="en">Serving {{ city.name }}</span><span data-lang="bm">Melayani {{ city.name }}</span><span data-lang="zh">服务 {{ city.name }}</span><span data-lang="ta">{{ city.name }} பகுதியில் சேவை</span></span>
+    </div>
+    <h1><span data-lang="en">Custom Kitchen Cabinets in {{ city.name }}</span><span data-lang="bm">Kabinet Dapur Custom di {{ city.name }}</span><span data-lang="zh">{{ city.name }} 定制厨房橱柜</span><span data-lang="ta">{{ city.name }} இல் தனிப்பயன் சமையலறை அலமாரிகள்</span></h1>
+    <p class="hero-sub" style="text-align: center; margin-left: auto; margin-right: auto;"><span data-lang="en">Premium custom kitchen cabinets designed, built and installed in {{ city.name }}. From RM4,500. Free site visit, design consultation & 1-year warranty.</span><span data-lang="bm">Kabinet dapur custom premium yang direka bentuk, dibina dan dipasang di {{ city.name }}. Dari RM4,500. Lawatan tapak percuma, konsultasi reka bentuk & waranti 1 tahun.</span><span data-lang="zh">在 {{ city.name }} 设计、制作和安装的高级定制厨房橱柜。起价 RM4,500。免费上门量房、设计咨询及一年质保。</span><span data-lang="ta">{{ city.name }} இல் வடிவமைக்கப்பட்ட, கட்டப்பட்ட மற்றும் நிறுவப்பட்ட பிரீமியம் தனிப்பயன் சமையலறை அலமாரிகள். RM4,500 முதல். இலவச வீட்டு வருகை, வடிவமைப்பு ஆலோசனை & 1 வருட உத்தரவாதம்.</span></p>
+    <div class="hero-btns" style="justify-content: center;">
+      {% include 'whatsapp-cta.njk' %}
+    </div>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="section-header">
+    <p class="section-eyebrow"><span data-lang="en">Why Choose Us</span><span data-lang="bm">Mengapa Pilih Kami</span><span data-lang="zh">为什么选择我们</span><span data-lang="ta">எங்களை ஏன் தேர்வு செய்ய வேண்டும்</span></p>
+    <h2 class="section-title"><span data-lang="en">The Best Kitchen Cabinet Maker in {{ city.name }}</span><span data-lang="bm">Pembuat Kabinet Dapur Terbaik di {{ city.name }}</span><span data-lang="zh">{{ city.name }} 最好的厨房橱柜制造商</span><span data-lang="ta">{{ city.name }} இல் சிறந்த சமையலறை அலமாரி தயாரிப்பாளர்</span></h2>
+    <p class="section-desc"><span data-lang="en">Trusted by homeowners across {{ city.name }} for quality craftsmanship and reliable service.</span><span data-lang="bm">Dipercayai oleh pemilik rumah di seluruh {{ city.name }} untuk kerja tangan berkualiti dan perkhidmatan yang boleh diharap.</span><span data-lang="zh">深受 {{ city.name }} 各地房主的信赖，以优质工艺和可靠服务著称。</span><span data-lang="ta">{{ city.name }} முழுவதும் உள்ள வீட்டு உரிமையாளர்களால் நம்பப்படுகிறது, தரமான கைவினைஞர் மற்றும் நம்பகமான சேவைக்காக.</span></p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <h3><span data-lang="en">Local Expertise</span><span data-lang="bm">Pakar Tempatan</span><span data-lang="zh">本地专业知识</span><span data-lang="ta">உள்ளூர் நிபுணத்துவம்</span></h3>
+      <p><span data-lang="en">We know {{ city.name }} well and provide tailored solutions for homes in this area.</span><span data-lang="bm">Kami mengenali {{ city.name }} dengan baik dan menyediakan penyelesaian yang disesuaikan untuk rumah di kawasan ini.</span><span data-lang="zh">我们熟悉 {{ city.name }}，为该地区的住宅提供量身定制的解决方案。</span><span data-lang="ta">எங்களுக்கு {{ city.name }} நன்கு தெரியும் மற்றும் இந்த பகுதியில் உள்ள வீடுகளுக்கு தகவமைப்பட்ட தீர்வுகளை வழங்குகிறோம்.</span></p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <h3><span data-lang="en">Fast Installation</span><span data-lang="bm">Pemasangan Pantas</span><span data-lang="zh">快速安装</span><span data-lang="ta">விரைவான நிறுவல்</span></h3>
+      <p><span data-lang="en">Most installations in {{ city.name }} are completed within 2-7 days with minimal disruption.</span><span data-lang="bm">Kebanyakan pemasangan di {{ city.name }} disiapkan dalam masa 2-7 hari dengan gangguan minimum.</span><span data-lang="zh">{{ city.name }} 的大多数安装在 2-7 天内完成，干扰最小。</span><span data-lang="ta">{{ city.name }} இல் பெரும்பாலான நிறுவல்கள் குறைந்தபட்ச இடையீருடன் 2-7 நாட்களில் முடிக்கப்படுகின்றன.</span></p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
+      <h3><span data-lang="en">Competitive Pricing</span><span data-lang="bm">Harga Berpatutan</span><span data-lang="zh">有竞争力的价格</span><span data-lang="ta">போட்டிமிக்க விலை</span></h3>
+      <p><span data-lang="en">Custom kitchen cabinets in {{ city.name }} from RM4,500. No hidden fees, transparent quotes.</span><span data-lang="bm">Kabinet dapur custom di {{ city.name }} dari RM4,500. Tiada bayaran tersembunyi, sebut harga telus.</span><span data-lang="zh">{{ city.name }} 的定制厨房橱柜起价 RM4,500。无隐藏费用，报价透明。</span><span data-lang="ta">{{ city.name }} இல் தனிப்பயன் சமையலறை அலமாரிகள் RM4,500 முதல். மறைக்கப்பட்ட கட்டணங்கள் இல்லை, வெளிப்படையான மதிப்பீடுகள்.</span></p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3><span data-lang="en">1-Year Warranty</span><span data-lang="bm">Waranti 1 Tahun</span><span data-lang="zh">一年质保</span><span data-lang="ta">1 வருட உத்தரவாதம்</span></h3>
+      <p><span data-lang="en">Every kitchen cabinet project in {{ city.name }} comes with our comprehensive 1-year warranty.</span><span data-lang="bm">Setiap projek kabinet dapur di {{ city.name }} disertai dengan waranti 1 tahun yang komprehensif.</span><span data-lang="zh">{{ city.name }} 的每个厨房橱柜项目都附带我们全面的一年质保。</span><span data-lang="ta">{{ city.name }} இல் ஒவ்வொரு சமையலறை அலமாரி திட்டமும் எங்களின் விரிவான 1 வருட உத்தரவாதத்துடன் வருகிறது.</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-header">
+    <p class="section-eyebrow"><span data-lang="en">Areas We Cover</span><span data-lang="bm">Kawasan yang Kami Liputi</span><span data-lang="zh">我们覆盖的区域</span><span data-lang="ta">எங்கள் உள்ளடக்கிய பகுதிகள்</span></p>
+    <h2 class="section-title"><span data-lang="en">Kitchen Cabinets Across {{ city.name }}</span><span data-lang="bm">Kabinet Dapur di Seluruh {{ city.name }}</span><span data-lang="zh">{{ city.name }} 各地的厨房橱柜</span><span data-lang="ta">{{ city.name }} முழுவதும் சமையலறை அலமாரிகள்</span></h2>
+    <p class="section-desc"><span data-lang="en">Click on any area below to learn more about our kitchen cabinet services near you.</span><span data-lang="bm">Klik mana-mana kawasan di bawah untuk mengetahui lebih lanjut mengenai perkhidmatan kabinet dapur kami berhampiran anda.</span><span data-lang="zh">点击下方任何区域，了解我们附近厨房橱柜服务的更多信息。</span><span data-lang="ta">உங்கள் அருகில் எங்கள் சமையலறை அலமாரி சேவைகளைப் பற்றி மேலும் அறிய கீழே உள்ள எந்த பகுதியையும் கிளிக் செய்யுங்கள்.</span></p>
+  </div>
+  <div class="areas-grid">
+    {% for area in city.areas %}
+    <div class="city-card">
+      <div class="city-card-title"><a href="/{{ city.slug }}/{{ area.slug }}/">{{ area.name }}</a></div>
+      <ul class="city-card-areas">
+        <li><a href="/{{ city.slug }}/{{ area.slug }}/"><span data-lang="en">Kitchen Cabinets in {{ area.name }}</span><span data-lang="bm">Kabinet Dapur di {{ area.name }}</span><span data-lang="zh">{{ area.name }} 厨房橱柜</span><span data-lang="ta">{{ area.name }} இல் சமையலறை அலமாரிகள்</span></a></li>
+      </ul>
+      <a href="/{{ city.slug }}/{{ area.slug }}/" class="see-more-link"><span data-lang="en">View Details</span><span data-lang="bm">Lihat Butiran</span><span data-lang="zh">查看详情</span><span data-lang="ta">விவரங்களைக் காண்க</span></a>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section" style="background: var(--warm-white);">
+  <div class="section-header">
+    <p class="section-eyebrow"><span data-lang="en">Common Questions</span><span data-lang="bm">Soalan Lazim</span><span data-lang="zh">常见问题</span><span data-lang="ta">பொதுவான கேள்விகள்</span></p>
+    <h2 class="section-title"><span data-lang="en">FAQs About Kitchen Cabinets in {{ city.name }}</span><span data-lang="bm">Soalan Lazim Mengenai Kabinet Dapur di {{ city.name }}</span><span data-lang="zh">{{ city.name }} 厨房橱柜常见问题</span><span data-lang="ta">{{ city.name }} இல் சமையலறை அலமாரிகள் பற்றிய பொதுவான கேள்விகள்</span></h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span data-lang="en">How much do kitchen cabinets cost in {{ city.name }}?</span><span data-lang="bm">Berapa kos kabinet dapur di {{ city.name }}?</span><span data-lang="zh">{{ city.name }} 的厨房橱柜价格是多少？</span><span data-lang="ta">{{ city.name }} இல் சமையலறை அலமாரிகள் எவ்வளவு?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><span data-lang="en">Kitchen cabinets in {{ city.name }} typically range from RM4,500 to RM20,000 depending on size, materials, and design. We provide free quotes after a site visit.</span><span data-lang="bm">Kabinet dapur di {{ city.name }} biasanya berharga antara RM4,500 hingga RM20,000 bergantung kepada saiz, bahan dan reka bentuk. Kami menyediakan sebut harga percuma selepas lawatan tapak.</span><span data-lang="zh">{{ city.name }} 的厨房橱柜价格通常在 RM4,500 至 RM20,000 之间，具体取决于尺寸、材料和设计。上门量房后我们提供免费报价。</span><span data-lang="ta">{{ city.name }} இல் சமையலறை அலமாரிகள் பொதுவாக RM4,500 முதல் RM20,000 வரை இருக்கும். இலவச மதிப்பீட்டிற்கு வீட்டு வருகைக்குப் பிறகு வழங்குகிறோம்.</span></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span data-lang="en">Do you offer free delivery to {{ city.name }}?</span><span data-lang="bm">Adakah anda menawarkan penghantaran percuma ke {{ city.name }}?</span><span data-lang="zh">你们提供免费送货到 {{ city.name }} 吗？</span><span data-lang="ta">{{ city.name }} இல் இலவச விநியோகம் வழங்குகிறீர்களா?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><span data-lang="en">Yes! We offer free delivery and installation within {{ city.name }} and surrounding areas for all kitchen cabinet projects.</span><span data-lang="bm">Ya! Kami menawarkan penghantaran dan pemasangan percuma di dalam {{ city.name }} dan kawasan sekitarnya untuk semua projek kabinet dapur.</span><span data-lang="zh">是的！我们为 {{ city.name }} 及周边地区的所有厨房橱柜项目提供免费送货和安装服务。</span><span data-lang="ta">ஆம்! {{ city.name }} மற்றும் சுற்றியுள்ள பகுதிகளில் அனைத்து சமையலறை அலமாரி திட்டங்களுக்கும் இலவச டெலிவரி மற்றும் நிறுவல் வழங்குகிறோம்.</span></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span data-lang="en">How long does installation take in {{ city.name }}?</span><span data-lang="bm">Berapa lama pemasangan mengambil masa di {{ city.name }}?</span><span data-lang="zh">{{ city.name }} 的安装需要多长时间？</span><span data-lang="ta">{{ city.name }} இல் நிறுவல் எத்தனை நாட்கள் எடுக்கும்?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><span data-lang="en">Most kitchen cabinet installations in {{ city.name }} are completed within 2 to 7 days, depending on the project size and complexity. Full projects typically take 2-3 weeks from approval.</span><span data-lang="bm">Kebanyakan pemasangan kabinet dapur di {{ city.name }} disiapkan dalam 2 hingga 7 hari, bergantung kepada saiz dan kerumitan projek. Projek penuh biasanya mengambil masa 2-3 minggu dari kelulusan.</span><span data-lang="zh">{{ city.name }} 的大多数厨房橱柜安装在 2 至 7 天内完成，具体取决于项目规模和复杂程度。从确认到完成，整个项目通常需要 2-3 周。</span><span data-lang="ta">{{ city.name }} இல் பெரும்பாலான சமையலறை அலமாரி நிறுவல்கள் 2 முதல் 7 நாட்களுக்குள் முடிக்கப்படுகின்றன. முழு திட்டங்கள் பொதுவாக ஒப்புதலிலிருந்து 2-3 வாரங்கள் எடுக்கும்.</span></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span data-lang="en">What materials do you use for cabinets in {{ city.name }}?</span><span data-lang="bm">Apakah bahan yang anda gunakan untuk kabinet di {{ city.name }}?</span><span data-lang="zh">在 {{ city.name }} 你们使用什么材料制作橱柜？</span><span data-lang="ta">{{ city.name }} இல் அலமாரிகளுக்கு என்ன பொருட்களைப் பயன்படுத்துகிறீர்கள்?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-a"><span data-lang="en">We use high-quality laminate, solid wood, and melamine selected for durability and Malaysia's humid climate — perfect for homes in {{ city.name }}.</span><span data-lang="bm">Kami menggunakan laminate, kayu pepejal dan melamine berkualiti tinggi yang dipilih untuk ketahanan dan iklim Malaysia yang lembap — sesuai untuk rumah di {{ city.name }}.</span><span data-lang="zh">我们使用高品质贴面板、实木和美耐板，专为马来西亚潮湿气候精选的耐用材料——非常适合 {{ city.name }} 的住宅。</span><span data-lang="ta">பொறுமைக்கும் மலேசியாவின் ஈரப்பதமான காலநிலைக்கும் தேர்ந்தெடுக்கப்பட்ட உயர்தர லேமினேட், திட மரம் மற்றும் மெலமைன் பயன்படுத்துகிறோம் — {{ city.name }} இல் உள்ள வீடுகளுக்கு சரியானது.</span></div></div>
+  </div>
+</section>
+
+{% include 'seo-extras.njk' %}
+
+<section class="cta-banner">
+  <h2><span data-lang="en">Ready for Your Dream Kitchen in {{ city.name }}?</span><span data-lang="bm">Bersedia untuk Dapur Impian Anda di {{ city.name }}?</span><span data-lang="zh">准备好打造 {{ city.name }} 的梦想厨房了吗？</span><span data-lang="ta">{{ city.name }} இல் உங்கள் கனவு சமையலறைக்கு தயாரா?</span></h2>
+  <p><span data-lang="en">WhatsApp us now for a free site visit, design consultation & quotation in {{ city.name }}</span><span data-lang="bm">WhatsApp kami sekarang untuk lawatan tapak percuma, konsultasi reka bentuk & sebut harga di {{ city.name }}</span><span data-lang="zh">立即 WhatsApp 我们，获取 {{ city.name }} 的免费上门量房、设计咨询及报价</span><span data-lang="ta">{{ city.name }} இல் இலவச வீட்டு வருகை, வடிவமைப்பு ஆலோசனை & மதிப்பீட்டிற்கு இப்போதே WhatsApp செய்யுங்கள்</span></p>
+  <a href="https://wa.me/{{ site.whatsapp | replace('+', '') }}?text=Hi%2C%20I%20found%20your%20contact%20on%20the%20website.%20I%27m%20interested%20in%20a%20custom%20kitchen%20cabinet%20for%20my%20home.%20Could%20I%20get%20a%20free%20quote%3F" class="btn-wa" rel="nofollow noopener">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.51 5.843L0 24l6.335-1.486A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.807 9.807 0 01-5.032-1.383l-.36-.214-3.742.878.9-3.647-.235-.374A9.768 9.768 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+    <span data-lang="en">WhatsApp for Free Quote</span>
+    <span data-lang="bm">WhatsApp untuk Sebut Harga Percuma</span>
+    <span data-lang="zh">WhatsApp 免费报价</span>
+    <span data-lang="ta">இலவச மதிப்பீட்டிற்கு WhatsApp செய்யுங்கள்</span>
+  </a>
+</section>

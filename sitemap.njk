@@ -1,0 +1,35 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>{{ site.url }}/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>{{ site.url }}/area-coverage/</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>{{ site.url }}/about-us/</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>{{ site.url }}/contact-us/</loc>
+    <priority>0.5</priority>
+  </url>
+  {% for city in locations.cities %}
+  <url>
+    <loc>{{ site.url }}/{{ city.slug }}/</loc>
+    <priority>0.7</priority>
+  </url>
+  {% for area in city.areas %}
+  <url>
+    <loc>{{ site.url }}/{{ city.slug }}/{{ area.slug }}/</loc>
+    <priority>0.6</priority>
+  </url>
+  {% endfor %}
+  {% endfor %}
+</urlset>

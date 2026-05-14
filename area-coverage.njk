@@ -1,0 +1,52 @@
+---
+layout: default.njk
+title: Service Areas - Choice Kitchen Cabinet
+description: Our kitchen cabinet services reach homeowners across Kuala Lumpur & Selangor (Klang Valley) and various other states throughout Malaysia.
+city: null
+area: null
+---
+
+<!-- Hero Section -->
+<section class="hero" style="min-height: 50vh; display: grid; grid-template-columns: 1fr; place-items: center; padding: 60px 5%;">
+  <div class="hero-text" style="text-align: center; max-width: 800px; margin: 0 auto;">
+    <div class="hero-badge" style="justify-content: center;">
+      <span class="hero-badge-dot"></span>
+      <span class="badge-text"><span data-lang="en">Covering All of Selangor &amp; KL</span><span data-lang="bm">Merangkumi Selangor &amp; KL</span><span data-lang="zh">覆盖雪兰莪和吉隆坡</span><span data-lang="ta">செலங்கோர் &amp; KL முழுவதும்</span></span>
+    </div>
+    <h1><span data-lang="en">Our Service Areas</span><span data-lang="bm">Kawasan Perkhidmatan Kami</span><span data-lang="zh">我们的服务区域</span><span data-lang="ta">எங்கள் சேவை பகுதிகள்</span></h1>
+    <p class="hero-sub" style="text-align: center; margin-left: auto; margin-right: auto;"><span data-lang="en">Our kitchen cabinet services reach homeowners across Kuala Lumpur &amp; Selangor (Klang Valley) and various other states throughout Malaysia. Click on any city or area to learn more about our services near you.</span><span data-lang="bm">Perkhidmatan kabinet dapur kami menjangkau pemilik rumah di Kuala Lumpur &amp; Selangor (Lembah Klang) dan pelbagai negeri lain di seluruh Malaysia.</span><span data-lang="zh">我们的厨房橱柜服务覆盖吉隆坡和雪兰莪（巴生谷）以及马来西亚其他各州的房主。点击任何城市或地区，了解我们附近的服务。</span><span data-lang="ta">எங்கள் சமையலறை அலமாரி சேவைகள் கோலாலம்பூர் &amp; செலங்கோர் (கிளாங் பள்ளத்தாக்கு) மற்றும் மலேசியா முழுவதும் பல்வேறு மாநிலங்களில் உள்ள வீட்டு உரிமையாளர்களை அடைகின்றன.</span></p>
+  </div>
+</section>
+
+<!-- Service Areas Grid -->
+<section class="section-alt">
+  <div class="section-header">
+    <p class="section-eyebrow"><span data-lang="en">Cities We Serve</span><span data-lang="bm">Bandar yang Kami Layani</span><span data-lang="zh">我们服务的城市</span><span data-lang="ta">நாங்கள் சேவை செய்யும் நகரங்கள்</span></p>
+    <h2 class="section-title"><span data-lang="en">Find Kitchen Cabinets Near You</span><span data-lang="bm">Cari Kabinet Dapur Berhampiran Anda</span><span data-lang="zh">在您附近寻找厨房橱柜</span><span data-lang="ta">உங்கள் அருகில் சமையலறை அலமாரிகளைக் கண்டறியுங்கள்</span></h2>
+    <p class="section-desc"><span data-lang="en">Choose your city below to explore all the areas we cover with custom kitchen cabinet design, delivery & installation.</span><span data-lang="bm">Pilih bandar anda di bawah untuk meneroka semua kawasan yang kami liputi dengan reka bentuk kabinet dapur custom, penghantaran & pemasangan.</span><span data-lang="zh">在下面选择您的城市，探索我们涵盖的所有地区，提供定制厨房橱柜设计、送货和安装服务。</span><span data-lang="ta">உங்கள் நகரத்தை கீழே தேர்வு செய்து, தனிப்பயனாக்கப்பட்ட சமையலறை அலமாரி வடிவமைப்பு, டெலிவரி & நிறுவலுடன் நாங்கள் உள்ளடக்கிய அனைத்து பகுதிகளையும் ஆராயுங்கள்.</span></p>
+  </div>
+
+  <div class="areas-grid">
+    {% for city in locations.cities %}
+    <div class="city-card">
+      <div class="city-card-title"><a href="/{{ city.slug }}/">{{ city.name }}</a></div>
+      <ul class="city-card-areas">
+        {% for area in city.areas | limit(3) %}
+        <li><a href="/{{ city.slug }}/{{ area.slug }}/">{{ area.name }}</a></li>
+        {% endfor %}
+      </ul>
+      <a href="/{{ city.slug }}/" class="see-more-link"><span data-lang="en">See more ({{ city.areas.length }})</span><span data-lang="bm">Lihat lagi ({{ city.areas.length }})</span><span data-lang="zh">查看更多 ({{ city.areas.length }})</span><span data-lang="ta">மேலும் காண்க ({{ city.areas.length }})</span></a>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="section" style="background: var(--warm-white);">
+  <div class="section-header">
+    <p class="section-eyebrow"><span data-lang="en">Can't Find Your Area?</span><span data-lang="bm">Tidak Jumpa Kawasan Anda?</span><span data-lang="zh">找不到您的地区？</span><span data-lang="ta">உங்கள் பகுதியைக் கண்டுபிடிக்க முடியவில்லையா?</span></p>
+    <h2 class="section-title"><span data-lang="en">We Are Expanding Fast</span><span data-lang="bm">Kami Berkembang Pesat</span><span data-lang="zh">我们正快速扩展</span><span data-lang="ta">நாங்கள் வேகமாக வளர்ந்து வருகிறோம்</span></h2>
+    <p class="section-desc"><span data-lang="en">Contact us to check if we serve your location. We're constantly expanding our service areas across Malaysia.</span><span data-lang="bm">Hubungi kami untuk menyemak sama ada kami melayani lokasi anda. Kami sentiasa mengembangkan kawasan perkhidmatan kami di seluruh Malaysia.</span><span data-lang="zh">联系我们，查询我们是否服务于您的位置。我们不断在马来西亚各地扩展服务区域。</span><span data-lang="ta">உங்கள் இடத்தில் நாங்கள் சேவை செய்கிறோமா என்பதை சரிபார்க்க எங்களை தொடர்பு கொள்ளுங்கள். மலேசியா முழுவதும் எங்கள் சேவை பகுதிகளை விரிவுபடுத்தி வருகிறோம்.</span></p>
+    <div style="margin-top: 36px;">{% include 'whatsapp-cta.njk' %}</div>
+  </div>
+</section>

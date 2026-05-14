@@ -1,0 +1,16 @@
+{
+  "name": "Choice Kitchen Cabinet",
+  "url": "https://www.mychoicecabinet.com",
+  "description": "Best Quality Kitchen Cabinet Manufacturer in Malaysia",
+  "phone": "+60178360455",
+  "whatsapp": "+60178360455",
+  "email": "admin@mychoicecabinet.com",
+  "facebookPixelId": "YOUR_FACEBOOK_PIXEL_ID",
+  "address": {
+    "streetAddress": "21, Jalan Meranti Permai 6, Meranit Permai",
+    "addressLocality": "Puchong",
+    "addressRegion": "Selangor",
+    "postalCode": "47120",
+    "addressCountry": "MY"
+  }
+}

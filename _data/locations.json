@@ -1,0 +1,269 @@
+{
+  "cities": [
+    {
+      "name": "Kuala Lumpur",
+      "slug": "kuala-lumpur",
+      "description": "Malaysia's capital city and premier location for premium kitchen cabinets",
+      "areas": [
+        {"name": "Pudu", "slug": "pudu"},
+        {"name": "Kepong", "slug": "kepong"},
+        {"name": "Bangsar", "slug": "bangsar"},
+        {"name": "Cheras", "slug": "cheras"},
+        {"name": "Setapak", "slug": "setapak"},
+        {"name": "Seputeh", "slug": "seputeh"},
+        {"name": "Wangsa Maju", "slug": "wangsa-maju"},
+        {"name": "Titiwangsa", "slug": "titiwangsa"},
+        {"name": "Bukit Bintang", "slug": "bukit-bintang"},
+        {"name": "Putrajaya", "slug": "putrajaya"},
+        {"name": "Sungai Besi", "slug": "sungai-besi"},
+        {"name": "Setiawangsa", "slug": "setiawangsa"},
+        {"name": "Pandan Jaya", "slug": "pandan-jaya"},
+        {"name": "Maluri", "slug": "maluri"},
+        {"name": "Keramat", "slug": "keramat"},
+        {"name": "Chow Kit", "slug": "chow-kit"},
+        {"name": "TTDI", "slug": "ttdi"},
+        {"name": "Brickfields", "slug": "brickfields"},
+        {"name": "Sri Petaling", "slug": "sri-petaling"},
+        {"name": "Sentul", "slug": "sentul"},
+        {"name": "Bukit Jalil", "slug": "bukit-jalil"},
+        {"name": "Taman Desa", "slug": "taman-desa"},
+        {"name": "Mont Kiara", "slug": "mont-kiara"}
+      ]
+    },
+    {
+      "name": "Petaling Jaya",
+      "slug": "petaling-jaya",
+      "description": "Vibrant city in Selangor with diverse residential and commercial areas",
+      "areas": [
+        {"name": "Damansara", "slug": "damansara"},
+        {"name": "Ara Damansara", "slug": "ara-damansara"},
+        {"name": "Bandar Utama", "slug": "bandar-utama"},
+        {"name": "Mutiara Damansara", "slug": "mutiara-damansara"},
+        {"name": "Damansara Perdana", "slug": "damansara-perdana"},
+        {"name": "Damansara Jaya", "slug": "damansara-jaya"},
+        {"name": "Damansara Utama", "slug": "damansara-utama"},
+        {"name": "Kampung Sungai Kayu Ara", "slug": "kampung-sungai-kayu-ara"},
+        {"name": "Kelana Jaya", "slug": "kelana-jaya"},
+        {"name": "Petaling Jaya City Centre", "slug": "petaling-jaya-city-centre"},
+        {"name": "Sungai Buloh", "slug": "sungai-buloh"},
+        {"name": "Kota Damansara", "slug": "kota-damansara"},
+        {"name": "Sri Damansara", "slug": "sri-damansara"},
+        {"name": "Petaling Jaya Selatan", "slug": "petaling-jaya-selatan"},
+        {"name": "Sungai Way", "slug": "sungai-way"}
+      ]
+    },
+    {
+      "name": "Shah Alam",
+      "slug": "shah-alam",
+      "description": "Capital of Selangor with modern residential developments",
+      "areas": [
+        {"name": "Shah Alam City Centre", "slug": "shah-alam-city-centre"},
+        {"name": "Bukit Jelutong", "slug": "bukit-jelutong"},
+        {"name": "i-City", "slug": "i-city"},
+        {"name": "Padang Jawa", "slug": "padang-jawa"},
+        {"name": "TTDI Jaya", "slug": "ttdi-jaya"},
+        {"name": "Sungai Buloh", "slug": "sungai-buloh"},
+        {"name": "Bukit Rahman Putra", "slug": "bukit-rahman-putra"},
+        {"name": "Kwasa Damansara", "slug": "kwasa-damansara"},
+        {"name": "Paya Jaras", "slug": "paya-jaras"},
+        {"name": "Puncak Perdana", "slug": "puncak-perdana"},
+        {"name": "Sungai Pelong", "slug": "sungai-pelong"},
+        {"name": "Subang", "slug": "subang"},
+        {"name": "Alam Budiman", "slug": "alam-budiman"},
+        {"name": "Bukit Subang", "slug": "bukit-subang"},
+        {"name": "Denai Alam", "slug": "denai-alam"},
+        {"name": "Elmina", "slug": "elmina"},
+        {"name": "Kota Kemuning", "slug": "kota-kemuning"},
+        {"name": "Bukit Rimau", "slug": "bukit-rimau"},
+        {"name": "Bukit Lanchong", "slug": "bukit-lanchong"},
+        {"name": "Kampung Lombong", "slug": "kampung-lombong"},
+        {"name": "Sri Muda", "slug": "sri-muda"},
+        {"name": "Putra Heights", "slug": "putra-heights"},
+        {"name": "Setia Alam", "slug": "setia-alam"},
+        {"name": "Alam Impian", "slug": "alam-impian"}
+      ]
+    },
+    {
+      "name": "Subang Jaya",
+      "slug": "subang-jaya",
+      "description": "Well-planned township with excellent amenities",
+      "areas": [
+        {"name": "Bandar Sunway", "slug": "bandar-sunway"},
+        {"name": "UEP Subang Jaya", "slug": "uep-subang-jaya"},
+        {"name": "Puchong", "slug": "puchong"},
+        {"name": "Puchong Jaya", "slug": "puchong-jaya"},
+        {"name": "Kinrara", "slug": "kinrara"},
+        {"name": "Pusat Bandar Puchong", "slug": "pusat-bandar-puchong"},
+        {"name": "Puteri Puchong", "slug": "puteri-puchong"},
+        {"name": "Putra Heights", "slug": "putra-heights"},
+        {"name": "Seri Kembangan", "slug": "seri-kembangan"},
+        {"name": "Kampung Desa Serdang", "slug": "kampung-desa-serdang"}
+      ]
+    },
+    {
+      "name": "Klang",
+      "slug": "klang",
+      "description": "Historical royal town with growing residential areas",
+      "areas": [
+        {"name": "Teluk Pulai", "slug": "teluk-pulai"},
+        {"name": "Taman Berkeley", "slug": "taman-berkeley"},
+        {"name": "Bandar Botanic", "slug": "bandar-botanic"},
+        {"name": "Bukit Raja", "slug": "bukit-raja"},
+        {"name": "Bukit Tinggi", "slug": "bukit-tinggi"},
+        {"name": "Sri Andalas", "slug": "sri-andalas"},
+        {"name": "Port Klang", "slug": "port-klang"},
+        {"name": "Pandamaran", "slug": "pandamaran"},
+        {"name": "Sultan Suleiman", "slug": "sultan-suleiman"},
+        {"name": "Glenmarie Cove", "slug": "glenmarie-cove"},
+        {"name": "Teluk Gong", "slug": "teluk-gong"},
+        {"name": "Tanjung Harapan", "slug": "tanjung-harapan"},
+        {"name": "Pulau Indah", "slug": "pulau-indah"},
+        {"name": "Pulau Ketam", "slug": "pulau-ketam"},
+        {"name": "Kapar", "slug": "kapar"},
+        {"name": "Meru", "slug": "meru"}
+      ]
+    },
+    {
+      "name": "Kajang",
+      "slug": "kajang",
+      "description": "Growing town with excellent connectivity to Kuala Lumpur",
+      "areas": [
+        {"name": "Bandar Baru Bangi", "slug": "bandar-baru-bangi"},
+        {"name": "Country Heights", "slug": "country-heights"},
+        {"name": "Jade Hills", "slug": "jade-hills"},
+        {"name": "Saujana Impian", "slug": "saujana-impian"},
+        {"name": "Taman Cuepacs", "slug": "taman-cuepacs"},
+        {"name": "Bangi", "slug": "bangi"},
+        {"name": "Bandar Seri Putra", "slug": "bandar-seri-putra"},
+        {"name": "Semenyih Broga", "slug": "semenyih-broga"},
+        {"name": "Batu 14", "slug": "batu-14"}
+      ]
+    },
+    {
+      "name": "Hulu Langat",
+      "slug": "hulu-langat",
+      "description": "Scenic district with mix of urban and rural areas",
+      "areas": [
+        {"name": "Dusun Tua", "slug": "dusun-tua"},
+        {"name": "Cheras", "slug": "cheras"},
+        {"name": "Alam Jaya", "slug": "alam-jaya"},
+        {"name": "Balakong", "slug": "balakong"},
+        {"name": "Tun Hussein Onn", "slug": "tun-hussein-onn"},
+        {"name": "Mahkota Cheras", "slug": "mahkota-cheras"},
+        {"name": "Sungai Long", "slug": "sungai-long"},
+        {"name": "Beranang", "slug": "beranang"}
+      ]
+    },
+    {
+      "name": "Ampang Jaya",
+      "slug": "ampang-jaya",
+      "description": "Upscale residential area near Kuala Lumpur",
+      "areas": [
+        {"name": "Lembah Jaya", "slug": "lembah-jaya"},
+        {"name": "Pandan Indah", "slug": "pandan-indah"},
+        {"name": "Pandan Jaya", "slug": "pandan-jaya"},
+        {"name": "Hulu Klang", "slug": "hulu-klang"},
+        {"name": "Bukit Antarabangsa", "slug": "bukit-antarabangsa"},
+        {"name": "Hillview", "slug": "hillview"},
+        {"name": "Keramat", "slug": "keramat"},
+        {"name": "Melawati", "slug": "melawati"}
+      ]
+    },
+    {
+      "name": "Selayang",
+      "slug": "selayang",
+      "description": "Strategic location with growing residential developments",
+      "areas": [
+        {"name": "Rawang", "slug": "rawang"},
+        {"name": "Bukit Sentosa", "slug": "bukit-sentosa"},
+        {"name": "Country Homes", "slug": "country-homes"},
+        {"name": "Tasik Puteri", "slug": "tasik-puteri"},
+        {"name": "Taman Tun Teja", "slug": "taman-tun-teja"},
+        {"name": "Bandar Baru Selayang", "slug": "bandar-baru-selayang"},
+        {"name": "Lagong", "slug": "lagong"},
+        {"name": "Batu Caves", "slug": "batu-caves"},
+        {"name": "Gombak", "slug": "gombak"},
+        {"name": "Greenwood", "slug": "greenwood"},
+        {"name": "Kampung Sungai Pusu", "slug": "kampung-sungai-pusu"},
+        {"name": "Batu Arang", "slug": "batu-arang"},
+        {"name": "Kundang", "slug": "kundang"},
+        {"name": "Kuang", "slug": "kuang"},
+        {"name": "Kepong", "slug": "kepong"}
+      ]
+    },
+    {
+      "name": "Sepang",
+      "slug": "sepang",
+      "description": "Home to KLIA and developing residential areas",
+      "areas": [
+        {"name": "Pekan Sepang", "slug": "pekan-sepang"},
+        {"name": "Kuala Lumpur International Airport", "slug": "kuala-lumpur-international-airport"},
+        {"name": "Sungai Pelek", "slug": "sungai-pelek"},
+        {"name": "Dengkil", "slug": "dengkil"},
+        {"name": "Cyberjaya", "slug": "cyberjaya"},
+        {"name": "Pulau Meranti", "slug": "pulau-meranti"},
+        {"name": "Putra Perdana", "slug": "putra-perdana"},
+        {"name": "Salak Tinggi", "slug": "salak-tinggi"},
+        {"name": "Kota Warisan", "slug": "kota-warisan"},
+        {"name": "Serenia City", "slug": "serenia-city"},
+        {"name": "Sunsuria City", "slug": "sunsuria-city"},
+        {"name": "Puchong South", "slug": "puchong-south"},
+        {"name": "Southville City", "slug": "southville-city"},
+        {"name": "Seri Kembangan South", "slug": "seri-kembangan-south"}
+      ]
+    },
+    {
+      "name": "Kuala Langat",
+      "slug": "kuala-langat",
+      "description": "Coastal district with agricultural and residential areas",
+      "areas": [
+        {"name": "Teluk Panglima Garang", "slug": "teluk-panglima-garang"},
+        {"name": "Jenjarom", "slug": "jenjarom"},
+        {"name": "Banting", "slug": "banting"},
+        {"name": "Jugra", "slug": "jugra"},
+        {"name": "Morib", "slug": "morib"},
+        {"name": "Sijangkang", "slug": "sijangkang"},
+        {"name": "Tanjung Sepat", "slug": "tanjung-sepat"},
+        {"name": "Tanjung Dua Belas", "slug": "tanjung-dua-belas"},
+        {"name": "Teluk Datok", "slug": "teluk-datok"},
+        {"name": "Carey Island", "slug": "carey-island"},
+        {"name": "Bandar Saujana Putra", "slug": "bandar-saujana-putra"}
+      ]
+    },
+    {
+      "name": "Kuala Selangor",
+      "slug": "kuala-selangor",
+      "description": "Coastal district known for fireflies and agriculture",
+      "areas": [
+        {"name": "Tanjung Karang", "slug": "tanjung-karang"},
+        {"name": "Bestari Jaya", "slug": "bestari-jaya"},
+        {"name": "Ijok", "slug": "ijok"},
+        {"name": "Jeram", "slug": "jeram"},
+        {"name": "Puncak Alam", "slug": "puncak-alam"}
+      ]
+    },
+    {
+      "name": "Hulu Selangor",
+      "slug": "hulu-selangor",
+      "description": "Hilly district with scenic residential areas",
+      "areas": [
+        {"name": "Kuala Kubu Baharu", "slug": "kuala-kubu-baharu"},
+        {"name": "Batang Kali", "slug": "batang-kali"},
+        {"name": "Bukit Kutu", "slug": "bukit-kutu"},
+        {"name": "Serendah", "slug": "serendah"},
+        {"name": "Bukit Beruntung", "slug": "bukit-beruntung"},
+        {"name": "Lembah Beringin", "slug": "lembah-beringin"},
+        {"name": "Hulu Bernam", "slug": "hulu-bernam"},
+        {"name": "Genting Highlands", "slug": "genting-highlands"}
+      ]
+    }
+  ],
+  "site": {
+    "name": "Choice Kitchen Cabinet",
+    "url": "https://www.mychoicecabinet.com",
+    "description": "Best Quality Kitchen Cabinet Manufacturer in Malaysia",
+    "phone": "+60178360455",
+    "whatsapp": "+60178360455",
+    "email": "admin@mychoicecabinet.com"
+  }
+}

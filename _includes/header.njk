@@ -1,0 +1,35 @@
+<header class="site-header">
+  <div class="header-content">
+    <a href="/" class="logo">
+      <img src="/assets/images/choice-logo.svg?v=1" alt="{{ site.name }}" class="logo-img">
+      <span class="logo-text">Choice Kitchen Cabinet</span>
+    </a>
+
+    <nav class="main-nav">
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-menu">
+        <li><a href="/">Home</a></li>
+        <li><a href="/area-coverage/">Service Areas</a></li>
+        <li><a href="/about-us/">About Us</a></li>
+        <li><a href="/contact-us/">Contact</a></li>
+        <li class="nav-cta">
+          <a href="https://wa.me/{{ site.whatsapp | replace('+', '') }}?text=Hi%2C%20I%20found%20your%20contact%20on%20the%20website.%20I%27m%20interested%20in%20a%20custom%20kitchen%20cabinet%20for%20my%20home.%20Could%20I%20get%20a%20free%20quote%3F" class="btn btn-primary">
+            Get Free Quote
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('en')" aria-label="English">EN</button>
+      <button class="lang-btn" onclick="setLang('bm')" aria-label="Bahasa Malaysia">BM</button>
+      <button class="lang-btn" onclick="setLang('zh')" aria-label="中文">中文</button>
+      <button class="lang-btn" onclick="setLang('ta')" aria-label="தமிழ்">தமிழ்</button>
+    </div>
+  </div>
+</header>

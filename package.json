@@ -1,0 +1,12 @@
+{
+  "name": "choice-kitchen-cabinet",
+  "version": "1.0.0",
+  "description": "Choice Kitchen Cabinet Website - Static Site with 11ty",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}
