@@ -4,7 +4,8 @@
   "description": "Choice Kitchen Cabinet Website - Static Site with 11ty",
   "scripts": {
     "start": "eleventy --serve",
-    "build": "eleventy"
+    "build": "eleventy",
+    "test": "node scripts/test-regression.js"
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1"

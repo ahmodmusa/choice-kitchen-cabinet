@@ -1,6 +1,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{{ title }} | {{ site.name }}</title>
+{% set metaTitle = title %}
+{% if site.name not in metaTitle %}
+  {% set metaTitle = metaTitle ~ " | " ~ site.name %}
+{% endif %}
+<title>{{ metaTitle }}</title>
 <meta name="description" content="{{ description }}">
 {% if city %}
 <meta name="keywords" content="kitchen cabinet {{ city.name }}, {{ city.name }} kitchen cabinets, custom kitchen {{ city.name }}, affordable kitchen cabinets Malaysia, kitchen renovation {{ city.name }}">
@@ -11,7 +15,7 @@
 {% endif %}
 
 <!-- Open Graph -->
-<meta property="og:title" content="{{ title }} | {{ site.name }}">
+<meta property="og:title" content="{{ metaTitle }}">
 <meta property="og:description" content="{{ description }}">
 <meta property="og:url" content="{{ site.url }}{{ page.url }}">
 <meta property="og:type" content="website">
@@ -23,7 +27,7 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ title }} | {{ site.name }}">
+<meta name="twitter:title" content="{{ metaTitle }}">
 <meta name="twitter:description" content="{{ description }}">
 <meta name="twitter:image" content="{{ site.url }}/assets/images/og-image.png">
 

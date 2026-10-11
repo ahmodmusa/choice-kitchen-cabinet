@@ -1280,13 +1280,18 @@
   "email": "{{ site.email }}",
   "address": {
     "@type": "PostalAddress",
-    "addressLocality": "{{ city.name }}",
-    "addressCountry": "MY"
+    "streetAddress": "{{ site.address.streetAddress }}",
+    "addressLocality": "{{ site.address.addressLocality }}",
+    "addressRegion": "{{ site.address.addressRegion }}",
+    "postalCode": "{{ site.address.postalCode }}",
+    "addressCountry": "{{ site.address.addressCountry }}"
   },
   "areaServed": {
     "@type": "City",
     "name": "{{ city.name }}"
   },
+  "priceRange": "RM4,500 - RM20,000",
+  "openingHours": "Mo-Sa 09:00-18:00",
   "image": "{{ site.url }}/assets/images/og-image.png"
 }
 </script>
@@ -1302,14 +1307,24 @@
   "email": "{{ site.email }}",
   "address": {
     "@type": "PostalAddress",
-    "addressLocality": "{{ area.name }}",
-    "addressRegion": "{{ area.city.name }}",
-    "addressCountry": "MY"
+    "streetAddress": "{{ site.address.streetAddress }}",
+    "addressLocality": "{{ site.address.addressLocality }}",
+    "addressRegion": "{{ site.address.addressRegion }}",
+    "postalCode": "{{ site.address.postalCode }}",
+    "addressCountry": "{{ site.address.addressCountry }}"
   },
-  "areaServed": {
-    "@type": "City",
-    "name": "{{ area.name }}"
-  },
+  "areaServed": [
+    {
+      "@type": "AdministrativeArea",
+      "name": "{{ area.name }}"
+    },
+    {
+      "@type": "City",
+      "name": "{{ area.city.name }}"
+    }
+  ],
+  "priceRange": "RM4,500 - RM20,000",
+  "openingHours": "Mo-Sa 09:00-18:00",
   "image": "{{ site.url }}/assets/images/og-image.png"
 }
 </script>
@@ -1336,7 +1351,7 @@
     {
       "@type": "City",
       "name": "{{ city.name }}"
-    }{% if not forloop.last %},{% endif %}
+    }{% if not loop.last %},{% endif %}
     {% endfor %}
   ],
   "priceRange": "RM4,500 - RM20,000",
