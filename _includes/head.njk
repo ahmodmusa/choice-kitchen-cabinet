@@ -4,7 +4,7 @@
 {% if site.name not in metaTitle %}
   {% set metaTitle = metaTitle ~ " | " ~ site.name %}
 {% endif %}
-<title>{{ metaTitle }}</title>
+<title>{{ metaTitle | safe }}</title>
 <meta name="description" content="{{ description }}">
 {% if city %}
 <meta name="keywords" content="kitchen cabinet {{ city.name }}, {{ city.name }} kitchen cabinets, custom kitchen {{ city.name }}, affordable kitchen cabinets Malaysia, kitchen renovation {{ city.name }}">

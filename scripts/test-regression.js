@@ -243,6 +243,53 @@ assert(blogHtml.includes('<link rel="canonical" href="https://www.mychoicecabine
 assert(!blogHtml.includes('hreflang="en-MY"'), 'Blog post must NOT have ?lang= hreflangs');
 console.log('PASS: Blog post structure, self-canonical, and hreflang exclusion verified.');
 
+// TEST 9: Phase 2B Five-Page CTR Title and Description Verification
+console.log('\n--- Test 9: Verifying Phase 2B 5-Page CTR Optimized Metadata ---');
+const expectedPages = [
+  {
+    path: path.join(siteDir, 'kuala-lumpur', 'wangsa-maju', 'index.html'),
+    title: 'Kitchen Cabinets Wangsa Maju | Custom Design & Quote | Choice Kitchen Cabinet',
+    attrTitle: 'Kitchen Cabinets Wangsa Maju | Custom Design &amp; Quote | Choice Kitchen Cabinet',
+    desc: 'Custom kitchen cabinet design and installation in Wangsa Maju. Explore durable materials, practical layouts, and get a fast quotation for your home.'
+  },
+  {
+    path: path.join(siteDir, 'petaling-jaya', 'petaling-jaya-city-centre', 'index.html'),
+    title: 'Custom Kitchen Cabinets in PJ City Centre | Choice | Choice Kitchen Cabinet',
+    attrTitle: 'Custom Kitchen Cabinets in PJ City Centre | Choice | Choice Kitchen Cabinet',
+    desc: 'Premium kitchen cabinets in PJ City Centre. Tailored cabinet joinery, smart storage solutions, and reliable installation with a transparent quote.'
+  },
+  {
+    path: path.join(siteDir, 'selayang', 'rawang', 'index.html'),
+    title: 'Kitchen Cabinet Rawang | Custom Design & Quotation | Choice Kitchen Cabinet',
+    attrTitle: 'Kitchen Cabinet Rawang | Custom Design &amp; Quotation | Choice Kitchen Cabinet',
+    desc: 'Quality custom kitchen cabinets in Rawang. Durable moisture-resistant materials, tailored layout planning, and straightforward pricing. Request a quote.'
+  },
+  {
+    path: path.join(siteDir, 'subang-jaya', 'seri-kembangan', 'index.html'),
+    title: 'Kitchen Cabinet Seri Kembangan | Design & Quote | Choice Kitchen Cabinet',
+    attrTitle: 'Kitchen Cabinet Seri Kembangan | Design &amp; Quote | Choice Kitchen Cabinet',
+    desc: 'Custom kitchen cabinets in Seri Kembangan. Quality finishes, customized storage configurations, and direct manufacturer quotes for your kitchen renovation.'
+  },
+  {
+    path: path.join(siteDir, 'sepang', 'cyberjaya', 'index.html'),
+    title: 'Kitchen Cabinets Cyberjaya | Custom Storage Solutions | Choice Kitchen Cabinet',
+    attrTitle: 'Kitchen Cabinets Cyberjaya | Custom Storage Solutions | Choice Kitchen Cabinet',
+    desc: 'Modern kitchen cabinets in Cyberjaya designed for condos and landed homes. Space-saving layouts, premium materials, and free quotations on WhatsApp.'
+  }
+];
+
+expectedPages.forEach(p => {
+  assert(fs.existsSync(p.path), `Page must exist on disk: ${p.path}`);
+  const html = fs.readFileSync(p.path, 'utf8');
+  assert(html.includes(`<title>${p.title}</title>`), `Title mismatch for ${p.path}`);
+  assert(html.includes(`<meta name="description" content="${p.desc}">`), `Description mismatch for ${p.path}`);
+  assert(html.includes(`<meta property="og:title" content="${p.attrTitle}">`), `OG title mismatch for ${p.path}`);
+  assert(html.includes(`<meta property="og:description" content="${p.desc}">`), `OG description mismatch for ${p.path}`);
+  assert(html.includes(`<meta name="twitter:title" content="${p.attrTitle}">`), `Twitter title mismatch for ${p.path}`);
+  assert(html.includes(`<meta name="twitter:description" content="${p.desc}">`), `Twitter description mismatch for ${p.path}`);
+});
+console.log(`PASS: All 5 pilot pages have accurate CTR-optimized titles, unique descriptions, and synced OG/Twitter metadata.`);
+
 // SUMMARY
 console.log('\n========================================');
 console.log(`RESULTS: ${passCount} PASSED, ${failCount} FAILED`);
@@ -251,5 +298,5 @@ console.log('========================================');
 if (failCount > 0) {
   process.exit(1);
 } else {
-  console.log('ALL PHASE 2A REGRESSION TESTS PASSED SUCCESSFULLY!');
+  console.log('ALL REGRESSION & PHASE 2B TESTS PASSED SUCCESSFULLY!');
 }

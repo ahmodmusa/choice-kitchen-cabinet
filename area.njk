@@ -6,8 +6,8 @@ pagination:
   alias: area
 permalink: "{{ area.city.slug }}/{{ area.slug }}/index.html"
 eleventyComputed:
-  title: "Kitchen Cabinets {{ area.name }}, {{ area.city.name }} | Choice Kitchen Cabinet"
-  description: "Custom kitchen cabinets in {{ area.name }}, {{ area.city.name }}. Premium design, delivery & installation. Free quote on WhatsApp. Trusted by 500+ families."
+  title: "{{ area.title | safe }}"
+  description: "{{ area.description | safe }}"
 ---
 
 {% include 'breadcrumbs.njk' %}
