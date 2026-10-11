@@ -20,6 +20,10 @@
       <li class="breadcrumb-item" aria-current="page">
         <span>{{ bcCity.name }}</span>
       </li>
+      {% else %}
+      <li class="breadcrumb-item" aria-current="page">
+        <span>{{ title }}</span>
+      </li>
       {% endif %}
     </ol>
   </div>

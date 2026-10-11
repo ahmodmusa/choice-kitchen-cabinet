@@ -35,11 +35,13 @@
 <link rel="canonical" href="{{ site.url }}{{ page.url }}">
 
 <!-- Hreflang Tags for Multi-Language SEO -->
+{% if not isArticle %}
 <link rel="alternate" hreflang="en-MY" href="{{ site.url }}{{ page.url }}?lang=en">
 <link rel="alternate" hreflang="ms-MY" href="{{ site.url }}{{ page.url }}?lang=bm">
 <link rel="alternate" hreflang="zh-MY" href="{{ site.url }}{{ page.url }}?lang=zh">
 <link rel="alternate" hreflang="ta-MY" href="{{ site.url }}{{ page.url }}?lang=ta">
 <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.url }}">
+{% endif %}
 
 <!-- Preconnect for Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">

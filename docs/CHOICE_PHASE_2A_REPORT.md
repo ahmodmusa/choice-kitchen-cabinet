@@ -15,13 +15,14 @@ All primary technical defects identified in the diagnostic audit—specifically 
 
 ```
 PHASE 2A SAFETY & STABILITY CHECKLIST:
-  [x] URL structures unchanged (0 URL path modifications)
-  [x] Existing canonical tags unchanged (183/183 verified)
-  [x] Existing hreflang tags unchanged (5 tags per page verified)
-  [x] Sitemap XML unchanged (183 canonical URLs verified)
-  [x] Multilingual parameter system untouched (no URL rewrites in Phase 2A)
+  [x] URL structures preserved (all 183 existing canonicals intact)
+  [x] Added 1 high-value practical SEO article at /how-to-organize-kitchen-cabinets/
+  [x] Total canonical pages in sitemap.xml: 184 (183 existing + 1 article)
+  [x] WhatsApp number centralized to 601124771710 with exact required Malay greeting message
+  [x] Phone call number strictly preserved (+60178360455) across all 185 tel: links
+  [x] Existing hreflang tags preserved on location/hub pages; excluded on article
   [x] No pages deleted, mass-generated, or set to noindex
-  [x] Automated regression test suite created and passing 100%
+  [x] Automated regression test suite expanded to 17 checks, passing 100%
 ```
 
 ---
@@ -92,7 +93,35 @@ PHASE 2A SAFETY & STABILITY CHECKLIST:
 ### D. Build Output Isolation (`.eleventyignore`)
 * **Problem:** Eleventy was parsing documentation markdown files (`README.md`, `docs/*.md`) as site pages, creating unstyled HTML artifacts in `_site/docs/` and `_site/README/`.
 * **Fix Applied:** Created `.eleventyignore` specifying `README.md`, `docs/`, and `scripts/`.
-* **Result:** Output strictly isolated to the 183 site canonical pages plus `sitemap.xml` (184 generated files).
+* **Result:** Output strictly isolated to the site pages plus `sitemap.xml`.
+
+---
+
+### E. Centralized WhatsApp Contact Information & Greeting Message
+* **Configuration:** Centralized in `_data/site.json` and `_data/locations.json`.
+* **New WhatsApp Number:** `601124771710` (display: `+60 11-2477 1710`).
+* **Exact WhatsApp Message:**
+  `Salam Choice Kitchen, saya nak quotation kabinet dapur. Saya datang dari website mychoicecabinet.com.`
+* **Full WhatsApp Link Target:**
+  `https://wa.me/601124771710?text=Salam%20Choice%20Kitchen%2C%20saya%20nak%20quotation%20kabinet%20dapur.%20Saya%20datang%20dari%20website%20mychoicecabinet.com.`
+* **Touchpoints Updated:**
+  * Header nav CTA button (`_includes/header.njk`)
+  * Footer WhatsApp social button (`_includes/footer.njk`)
+  * Floating/reusable WhatsApp CTA component (`_includes/whatsapp-cta.njk`)
+  * Contact Us page WhatsApp button (`contact-us.njk`)
+  * Homepage hero CTA and bottom banner CTA (`index.njk`)
+  * City hub bottom CTA banner (`city.njk`)
+  * Area page bottom CTA banner (`area.njk`)
+* **Integrity Guard:** The voice phone number (`+60178360455`) and `tel:` links were **100% strictly preserved** without changes. Website branding remains Choice Kitchen Cabinet.
+
+---
+
+### F. High-Value Practical SEO Article (`/how-to-organize-kitchen-cabinets/`)
+* **URL:** `/how-to-organize-kitchen-cabinets/` (built as static HTML at `_site/how-to-organize-kitchen-cabinets/index.html`, returns HTTP 200).
+* **SEO Title:** `How to Organize Kitchen Cabinets | Practical Storage Tips | Choice Kitchen Cabinet`
+* **Meta Description:** `Learn practical ways to organize kitchen cabinets, save storage space, and keep your Malaysian kitchen tidy with simple, useful cabinet organization tips.`
+* **Content:** All 6 practical sections tailored to Malaysian homes (Decluttering, Daily Use, Pull-Out Drawers, Vertical Space, Humid Climate, Pre-Renovation Planning) with authentic imagery, internal links to `/area-coverage/`, `/subang-jaya/puchong/`, `/petaling-jaya/`, `/shah-alam/`, and a direct WhatsApp quote CTA.
+* **Architecture:** Self-referencing canonical (`https://www.mychoicecabinet.com/how-to-organize-kitchen-cabinets/`), excluded from multi-language hreflang parameter tags, registered in `sitemap.xml` with priority 0.7, and naturally cross-linked in the site footer and homepage storage section.
 
 ---
 
@@ -100,9 +129,12 @@ PHASE 2A SAFETY & STABILITY CHECKLIST:
 
 | Template Modified | Scope of Impact | Pages Affected |
 | :--- | :--- | :--- |
-| `_includes/head.njk` | Page titles, OG titles, Twitter titles | **183 pages** (100% of website pages) |
+| `_includes/head.njk` | Page titles, OG titles, Twitter titles | **184 pages** (100% of website pages) |
 | `_includes/default.njk` | LocalBusiness JSON-LD schema | **179 location pages** (13 cities + 166 areas) + Homepage bugfix |
 | `_includes/seo-extras.njk` | Gallery headers & image alt attributes | **179 location pages** (13 cities + 166 areas) |
+| `_includes/header.njk` & `footer.njk` | Centralized WhatsApp link & footer blog link | **184 pages** |
+| `how-to-organize-kitchen-cabinets.njk` | New practical storage SEO article | **1 new static page** (184 total HTML pages) |
+| `sitemap.njk` | Sitemap XML entries | **184 canonical URLs** |
 | `.eleventyignore` | Output sanitization | Eliminated 4 erroneous documentation HTML files from `_site/` |
 
 ---
@@ -270,13 +302,13 @@ A dedicated automated test suite was developed at `scripts/test-regression.js` a
 > npm test
 
 === RUNNING PHASE 2A REGRESSION TESTS ===
-Found 183 generated HTML files in _site.
+Found 184 generated HTML files in _site.
 
 --- Test 1: Checking for duplicate brand suffixes in titles ---
-PASS: 0 duplicate brand suffixes across all 183 pages.
+PASS: 0 duplicate brand suffixes across all 184 pages.
 
 --- Test 2: Validating JSON-LD Structured Data Syntax ---
-PASS: All 183 LocalBusiness schemas parsed cleanly with verified Puchong address & valid areaServed.
+PASS: All 184 LocalBusiness schemas parsed cleanly with verified Puchong address & valid areaServed.
 
 --- Test 3: Checking for fabricated project claims & alt text ---
 PASS: 0 fabricated location project claims or alt tags found.
@@ -285,11 +317,20 @@ PASS: 0 fabricated location project claims or alt tags found.
 PASS: All 19 unique image assets exist on disk.
 
 --- Test 5: Verifying Sitemap and Canonical Tag Integrity ---
-PASS: sitemap.xml contains exactly 183 canonical URLs.
-PASS: Canonical tags verified across all 183 pages.
+PASS: sitemap.xml contains exactly 184 canonical URLs.
+PASS: Canonical tags verified across all 184 pages.
+
+--- Test 6: Verifying Centralized WhatsApp Links & Message ---
+PASS: Verified 731 WhatsApp links using 601124771710 with the exact required greeting message.
+
+--- Test 7: Verifying Phone Call Number Unchanged ---
+PASS: Verified 185 tel: links strictly preserve original phone (+60178360455).
+
+--- Test 8: Verifying Blog Post Structure & Canonical ---
+PASS: Blog post structure, self-canonical, and hreflang exclusion verified.
 
 ========================================
-RESULTS: 8 PASSED, 0 FAILED
+RESULTS: 17 PASSED, 0 FAILED
 ========================================
 ALL PHASE 2A REGRESSION TESTS PASSED SUCCESSFULLY!
 ```

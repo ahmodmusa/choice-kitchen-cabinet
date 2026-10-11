@@ -167,8 +167,11 @@ assert(fs.existsSync(sitemapPath), 'sitemap.xml must exist in _site');
 
 const sitemapContent = fs.readFileSync(sitemapPath, 'utf8');
 const sitemapUrls = [...sitemapContent.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
-assert(sitemapUrls.length === 183, `Expected 183 sitemap URLs, found ${sitemapUrls.length}`);
+assert(sitemapUrls.length === 184, `Expected 184 sitemap URLs, found ${sitemapUrls.length}`);
 console.log(`PASS: sitemap.xml contains exactly ${sitemapUrls.length} canonical URLs.`);
+
+// Verify blog post exists in sitemap
+assert(sitemapUrls.includes('https://www.mychoicecabinet.com/how-to-organize-kitchen-cabinets/'), 'Blog post must exist in sitemap.xml');
 
 let canonicalMismatchCount = 0;
 htmlFiles.forEach(file => {
@@ -181,6 +184,64 @@ htmlFiles.forEach(file => {
 });
 assert(canonicalMismatchCount === 0, `Expected 0 missing canonicals, found ${canonicalMismatchCount}`);
 console.log(`PASS: Canonical tags verified across all ${htmlFiles.length} pages.`);
+
+// TEST 6: WhatsApp link centralization and message verification
+console.log('\n--- Test 6: Verifying Centralized WhatsApp Links & Message ---');
+const expectedWaNum = '601124771710';
+const expectedWaEncodedMsg = 'Salam%20Choice%20Kitchen%2C%20saya%20nak%20quotation%20kabinet%20dapur.%20Saya%20datang%20dari%20website%20mychoicecabinet.com.';
+let oldWaCount = 0;
+let newWaCount = 0;
+let invalidWaMsgCount = 0;
+
+htmlFiles.forEach(file => {
+  const html = fs.readFileSync(file, 'utf8');
+  const waMatches = [...html.matchAll(/href="(https:\/\/wa\.me\/[^"]+)"/g)];
+  waMatches.forEach(m => {
+    const url = m[1];
+    if (url.includes('60178360455')) {
+      oldWaCount++;
+      console.error(`Old WhatsApp number found in ${file}: ${url}`);
+    }
+    if (url.includes(expectedWaNum)) {
+      newWaCount++;
+      if (!url.includes(expectedWaEncodedMsg)) {
+        invalidWaMsgCount++;
+        console.error(`Incorrect WhatsApp message text in ${file}: ${url}`);
+      }
+    }
+  });
+});
+
+assert(oldWaCount === 0, `Expected 0 old WhatsApp numbers, found ${oldWaCount}`);
+assert(newWaCount > 0, `Expected new WhatsApp links across pages, found ${newWaCount}`);
+assert(invalidWaMsgCount === 0, `Expected 0 invalid WhatsApp message parameters, found ${invalidWaMsgCount}`);
+console.log(`PASS: Verified ${newWaCount} WhatsApp links using ${expectedWaNum} with the exact required greeting message.`);
+
+// TEST 7: Verify Phone Call Number Unchanged (+60178360455)
+console.log('\n--- Test 7: Verifying Phone Call Number Unchanged ---');
+let telMatchesCount = 0;
+htmlFiles.forEach(file => {
+  const html = fs.readFileSync(file, 'utf8');
+  const telMatches = [...html.matchAll(/href="tel:([^"]+)"/g)];
+  telMatches.forEach(m => {
+    telMatchesCount++;
+    if (m[1] !== '+60178360455') {
+      console.error(`Unexpected tel: number in ${file}: ${m[1]}`);
+    }
+  });
+});
+assert(telMatchesCount >= 184, `Expected at least 184 tel: links, found ${telMatchesCount}`);
+console.log(`PASS: Verified ${telMatchesCount} tel: links strictly preserve original phone (+60178360455).`);
+
+// TEST 8: Verify Blog Post has no param hreflang and has valid content
+console.log('\n--- Test 8: Verifying Blog Post Structure & Canonical ---');
+const blogHtmlPath = path.join(siteDir, 'how-to-organize-kitchen-cabinets', 'index.html');
+assert(fs.existsSync(blogHtmlPath), 'Blog post HTML must exist on disk');
+const blogHtml = fs.readFileSync(blogHtmlPath, 'utf8');
+assert(blogHtml.includes('How to Organize Kitchen Cabinets: Practical Storage Tips for Malaysian Homes'), 'Blog must contain expected H1');
+assert(blogHtml.includes('<link rel="canonical" href="https://www.mychoicecabinet.com/how-to-organize-kitchen-cabinets/">'), 'Blog must have self canonical');
+assert(!blogHtml.includes('hreflang="en-MY"'), 'Blog post must NOT have ?lang= hreflangs');
+console.log('PASS: Blog post structure, self-canonical, and hreflang exclusion verified.');
 
 // SUMMARY
 console.log('\n========================================');
