@@ -167,11 +167,12 @@ assert(fs.existsSync(sitemapPath), 'sitemap.xml must exist in _site');
 
 const sitemapContent = fs.readFileSync(sitemapPath, 'utf8');
 const sitemapUrls = [...sitemapContent.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
-assert(sitemapUrls.length === 184, `Expected 184 sitemap URLs, found ${sitemapUrls.length}`);
+assert(sitemapUrls.length === 185, `Expected 185 sitemap URLs, found ${sitemapUrls.length}`);
 console.log(`PASS: sitemap.xml contains exactly ${sitemapUrls.length} canonical URLs.`);
 
-// Verify blog post exists in sitemap
-assert(sitemapUrls.includes('https://www.mychoicecabinet.com/how-to-organize-kitchen-cabinets/'), 'Blog post must exist in sitemap.xml');
+// Verify both historical blog posts exist in sitemap
+assert(sitemapUrls.includes('https://www.mychoicecabinet.com/how-to-organize-kitchen-cabinets/'), 'Blog post 1 must exist in sitemap.xml');
+assert(sitemapUrls.includes('https://www.mychoicecabinet.com/calculating-kitchen-cabinet-space/'), 'Blog post 2 must exist in sitemap.xml');
 
 let canonicalMismatchCount = 0;
 htmlFiles.forEach(file => {
@@ -230,18 +231,27 @@ htmlFiles.forEach(file => {
     }
   });
 });
-assert(telMatchesCount >= 184, `Expected at least 184 tel: links, found ${telMatchesCount}`);
+assert(telMatchesCount >= 185, `Expected at least 185 tel: links, found ${telMatchesCount}`);
 console.log(`PASS: Verified ${telMatchesCount} tel: links strictly preserve original phone (+60178360455).`);
 
-// TEST 8: Verify Blog Post has no param hreflang and has valid content
-console.log('\n--- Test 8: Verifying Blog Post Structure & Canonical ---');
-const blogHtmlPath = path.join(siteDir, 'how-to-organize-kitchen-cabinets', 'index.html');
-assert(fs.existsSync(blogHtmlPath), 'Blog post HTML must exist on disk');
-const blogHtml = fs.readFileSync(blogHtmlPath, 'utf8');
-assert(blogHtml.includes('How to Organize Kitchen Cabinets: Practical Storage Tips for Malaysian Homes'), 'Blog must contain expected H1');
-assert(blogHtml.includes('<link rel="canonical" href="https://www.mychoicecabinet.com/how-to-organize-kitchen-cabinets/">'), 'Blog must have self canonical');
-assert(!blogHtml.includes('hreflang="en-MY"'), 'Blog post must NOT have ?lang= hreflangs');
-console.log('PASS: Blog post structure, self-canonical, and hreflang exclusion verified.');
+// TEST 8: Verify Both Blog Posts Structure & Canonical
+console.log('\n--- Test 8: Verifying Both Blog Posts Structure & Canonicals ---');
+const blog1Path = path.join(siteDir, 'how-to-organize-kitchen-cabinets', 'index.html');
+assert(fs.existsSync(blog1Path), 'Blog post 1 HTML must exist on disk');
+const blog1Html = fs.readFileSync(blog1Path, 'utf8');
+assert(blog1Html.includes('How to Organize Kitchen Cabinets: Practical Storage Tips for Malaysian Homes'), 'Blog 1 must contain expected H1');
+assert(blog1Html.includes('<link rel="canonical" href="https://www.mychoicecabinet.com/how-to-organize-kitchen-cabinets/">'), 'Blog 1 must have self canonical');
+assert(!blog1Html.includes('hreflang="en-MY"'), 'Blog post 1 must NOT have ?lang= hreflangs');
+
+const blog2Path = path.join(siteDir, 'calculating-kitchen-cabinet-space', 'index.html');
+assert(fs.existsSync(blog2Path), 'Blog post 2 HTML must exist on disk');
+const blog2Html = fs.readFileSync(blog2Path, 'utf8');
+assert(blog2Html.includes('How to Calculate Kitchen Cabinet Space: The Practical Measurement Guide for Malaysian Homes'), 'Blog 2 must contain expected H1');
+assert(blog2Html.includes('<link rel="canonical" href="https://www.mychoicecabinet.com/calculating-kitchen-cabinet-space/">'), 'Blog 2 must have self canonical');
+assert(!blog2Html.includes('hreflang="en-MY"'), 'Blog post 2 must NOT have ?lang= hreflangs');
+assert(blog2Html.includes('"@type": "Article"'), 'Blog post 2 must have Article structured data');
+assert(blog2Html.includes('"@type": "FAQPage"'), 'Blog post 2 must have FAQPage structured data');
+console.log('PASS: Both blog posts structure, self-canonicals, Article/FAQ schemas, and hreflang exclusions verified.');
 
 // TEST 9: Phase 2B Five-Page CTR Title and Description Verification
 console.log('\n--- Test 9: Verifying Phase 2B 5-Page CTR Optimized Metadata ---');
