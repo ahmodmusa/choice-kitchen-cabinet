@@ -7,29 +7,42 @@
 
 ---
 
-## 1. Verified Historical Baselines (Search Console Data Exports)
+## 1. Verified Search Console Baselines
 
-Data sourced directly from verified Google Search Console exports preserved in `data-exports/Pages.csv` (aggregated 28-day performance window prior to Phase 2A technical changes).
+Data sourced directly from verified Google Search Console performance records. To prevent analytical confusion during weekly reviews, the **latest 28-day baseline** is strictly separated from the **longer 16-month historical export** (`data-exports/Pages.csv`).
 
-### 1.1 Overall Site Performance Baseline
-* **Verified Total Organic Clicks (28 Days):** 98 clicks
-* **Verified Total Organic Impressions (28 Days):** 4,556 impressions *(Note: Initial preliminary audit export showed 4,692 impressions across the full rolling window; 4,556 represents the strict row-level sum in `data-exports/Pages.csv`)*
+### 1.1 Latest 28-Day Baseline (Primary Monitoring Benchmark)
+* **Verified Total Organic Clicks (Latest 28 Days):** 98 clicks
+* **Verified Total Organic Impressions (Latest 28 Days):** 4,556 impressions *(Note: Initial preliminary audit export showed 4,692 impressions across the full rolling window; 4,556 represents the strict row-level sum in `data-exports/Pages.csv`)*
 * **Average CTR:** ~2.15%
 * **Average Position:** ~16.8
 
-### 1.2 Five-Page CTR Optimization Pilot Baseline
-These five key location pages were optimized in Phase 2B with unique, non-duplicative SEO titles and natural meta descriptions emphasizing genuine design, materials, and quotation requests without keyword stuffing or false claims:
+#### Five-Page Pilot Baseline (Latest 28-Day Period):
+These five key location pages were optimized in Phase 2B with unique, non-duplicative SEO titles and natural meta descriptions. Use these exact 28-day figures as the benchmark for weekly performance comparisons:
 
-| URL Path | Historical Clicks | Historical Impressions | Baseline CTR | Baseline Position | Optimized Phase 2B SEO Title |
-| :--- | :---: | :---: | :---: | :---: | :--- |
-| `/sepang/cyberjaya/` | **39** | 1,034 | 3.77% | 17.21 | `Kitchen Cabinets Cyberjaya \| Custom Storage Solutions` |
-| `/selayang/rawang/` | **38** | 2,167 | 1.75% | 11.25 | `Kitchen Cabinet Rawang \| Custom Design & Quotation` |
-| `/kuala-lumpur/wangsa-maju/` | **28** | 535 | 5.23% | 6.72 | `Kitchen Cabinets Wangsa Maju \| Custom Design & Quote` |
-| `/petaling-jaya/petaling-jaya-city-centre/` | **23** | 1,693 | 1.36% | 18.12 | `Custom Kitchen Cabinets in PJ City Centre \| Choice` |
-| `/subang-jaya/seri-kembangan/` | **15** | 623 | 2.41% | 15.67 | `Kitchen Cabinet Seri Kembangan \| Design & Quote` |
+| URL Path | Latest 28-Day Clicks | Latest 28-Day Impressions | Latest 28-Day CTR | Optimized Phase 2B SEO Title |
+| :--- | :---: | :---: | :---: | :--- |
+| `/kuala-lumpur/wangsa-maju/` | **0** | **136** | 0.00% | `Kitchen Cabinets Wangsa Maju \| Custom Design & Quote` |
+| `/petaling-jaya/petaling-jaya-city-centre/` | **0** | **107** | 0.00% | `Custom Kitchen Cabinets in PJ City Centre \| Choice` |
+| `/selayang/rawang/` | **3** | **190** | 1.58% | `Kitchen Cabinet Rawang \| Custom Design & Quotation` |
+| `/subang-jaya/seri-kembangan/` | **2** | **106** | 1.89% | `Kitchen Cabinet Seri Kembangan \| Design & Quote` |
+| `/sepang/cyberjaya/` | **0** | **92** | 0.00% | `Kitchen Cabinets Cyberjaya \| Custom Storage Solutions` |
 
-### 1.3 Informational & Historical Blog Articles Baseline
-Historical WordPress URLs identified from Search Console query/page data:
+---
+
+### 1.2 Longer 16-Month Cumulative Historical Export (Reference Data)
+For long-term context and historical trajectory, the full 16-month export (`data-exports/Pages.csv`) recorded cumulative volume prior to the static SSG migration:
+
+| URL Path | 16-Month Clicks | 16-Month Impressions | 16-Month CTR | 16-Month Avg Position |
+| :--- | :---: | :---: | :---: | :---: |
+| `/sepang/cyberjaya/` | 39 | 1,034 | 3.77% | 17.21 |
+| `/selayang/rawang/` | 38 | 2,167 | 1.75% | 11.25 |
+| `/kuala-lumpur/wangsa-maju/` | 28 | 535 | 5.23% | 6.72 |
+| `/petaling-jaya/petaling-jaya-city-centre/` | 23 | 1,693 | 1.36% | 18.12 |
+| `/subang-jaya/seri-kembangan/` | 15 | 623 | 2.41% | 15.67 |
+
+### 1.3 Informational & Historical Blog Articles (16-Month Historical Figures)
+Cumulative historical WordPress performance identified from Search Console query/page data:
 
 | Historical / Restored URL | Historical Clicks | Historical Impressions | Historical CTR | Historical Position | Current Restoration Status |
 | :--- | :---: | :---: | :---: | :---: | :--- |
@@ -110,13 +123,13 @@ Execute this checklist every Monday following production deployment to track sea
 * **Metric Extraction:**
   * Export performance table filtered by Page URL.
   * Compare current CTR against baseline CTR for each pilot page:
-    * `/sepang/cyberjaya/` (Target: maintain or exceed 3.77%)
-    * `/selayang/rawang/` (Target: increase from 1.75% towards 2.5%+)
-    * `/kuala-lumpur/wangsa-maju/` (Target: maintain strong 5.23% CTR, grow impressions)
-    * `/petaling-jaya/petaling-jaya-city-centre/` (Target: increase from 1.36% towards 2.0%+)
-    * `/subang-jaya/seri-kembangan/` (Target: increase from 2.41% towards 3.0%+)
-  * Record impressions for `/calculating-kitchen-cabinet-space/` (Baseline: 676 impressions over 28 days).
-  * Record impressions for `/how-to-organize-kitchen-cabinets/` (Baseline: 17,202 impressions over 28 days).
+    * `/kuala-lumpur/wangsa-maju/` (28-day baseline: 0 clicks, 136 impr, 0.00% CTR; 16-mo cumulative: 28 clicks, 535 impr, 5.23% CTR)
+    * `/petaling-jaya/petaling-jaya-city-centre/` (28-day baseline: 0 clicks, 107 impr, 0.00% CTR; 16-mo cumulative: 23 clicks, 1,693 impr, 1.36% CTR)
+    * `/selayang/rawang/` (28-day baseline: 3 clicks, 190 impr, 1.58% CTR; 16-mo cumulative: 38 clicks, 2,167 impr, 1.75% CTR)
+    * `/subang-jaya/seri-kembangan/` (28-day baseline: 2 clicks, 106 impr, 1.89% CTR; 16-mo cumulative: 15 clicks, 623 impr, 2.41% CTR)
+    * `/sepang/cyberjaya/` (28-day baseline: 0 clicks, 92 impr, 0.00% CTR; 16-mo cumulative: 39 clicks, 1,034 impr, 3.77% CTR)
+  * Record impressions for `/calculating-kitchen-cabinet-space/` (Historical reference: 676 impressions, 6 clicks).
+  * Record impressions for `/how-to-organize-kitchen-cabinets/` (Historical reference: 17,202 impressions, 3 clicks).
 
 ### Step 7: Index Coverage Shifts
 * **Tool:** GSC > Indexing > Pages
@@ -140,10 +153,11 @@ To ensure data integrity, team members must distinguish verified project records
 
 | Data Element | Status | Source / Requirement |
 | :--- | :--- | :--- |
-| **Historical 98 clicks / 4,556 impressions** | **VERIFIED HISTORICAL** | Hardcoded in `data-exports/Pages.csv`. Locked baseline. |
-| **Historical 5-Page Pilot Metrics** | **VERIFIED HISTORICAL** | Extracted from `data-exports/Pages.csv`. Locked baseline. |
-| **Historical Article Impressions (17.2k, 676, 2.8k)** | **VERIFIED HISTORICAL** | Recorded from previous WordPress GSC exports. Locked baseline. |
-| **Historical 117 Indexed / 85 Crawled-Not-Indexed** | **VERIFIED HISTORICAL** | Recorded in `docs/CHOICE_INDEXING_ROOT_CAUSE.md`. |
+| **Latest 28-Day Baseline (98 clicks / 4,556 impressions)** | **VERIFIED BASELINE** | Extracted from `data-exports/Pages.csv`. Locked 28-day benchmark. |
+| **Latest 28-Day 5-Page Pilot Metrics (Wangsa Maju: 136/0, PJ: 107/0, Rawang: 190/3, Seri Kembangan: 106/2, Cyberjaya: 92/0)** | **VERIFIED BASELINE** | Verified 28-day pilot page baseline. |
+| **16-Month Cumulative 5-Page Figures (Cyberjaya 39/1034, Rawang 38/2167, etc.)** | **HISTORICAL REFERENCE** | Historical cumulative totals prior to static migration. |
+| **Historical Article Metrics (17.2k impr, 676 impr, 2.8k impr)** | **HISTORICAL REFERENCE** | Recorded from previous WordPress GSC exports. |
+| **Historical 117 Indexed / 85 Crawled-Not-Indexed** | **VERIFIED BASELINE** | Recorded in `docs/CHOICE_INDEXING_ROOT_CAUSE.md`. |
 | **Post-Deployment Crawl Timestamps** | *FUTURE EXPORT* | Requires live GSC URL Inspection after production deploy. |
 | **SERP Title Replacement Speed** | *FUTURE EXPORT* | Requires weekly visual / cache SERP audits. |
 | **Post-Cleanup CTR Changes** | *FUTURE EXPORT* | Requires next Monday's 7-day GSC Performance export. |

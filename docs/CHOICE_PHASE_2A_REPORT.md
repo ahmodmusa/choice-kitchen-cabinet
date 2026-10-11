@@ -50,7 +50,7 @@ PHASE 2A SAFETY & STABILITY CHECKLIST:
 * **Problem:** On `city` and `area` pages, `_includes/default.njk` injected a `LocalBusiness` JSON-LD schema that claimed Choice Kitchen Cabinet had independent physical business branches in each individual town (e.g., `addressLocality: "Kota Kemuning"`) with no street address. Choice Kitchen Cabinet operates from a single verified factory and headquarters in **Puchong, Selangor**.
 * **Fix Applied:**
   Standardized all `LocalBusiness` schemas to represent the single verified business entity:
-  * **Verified Physical Address:** Always points to `21, Jalan Meranti Permai 6, Meranit Permai, Puchong, Selangor 47120, MY`.
+  * **Verified Physical Address:** Always points to `21, Jalan Meranti Permai 6, Meranti Permai, Puchong, Selangor 47120, MY`.
   * **Regional Targeting:** Accurately represented via the schema.org `areaServed` property:
     * For city pages: `"areaServed": { "@type": "City", "name": "{{ city.name }}" }`
     * For area pages:
@@ -166,7 +166,7 @@ PHASE 2A SAFETY & STABILITY CHECKLIST:
   ```json
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "21, Jalan Meranti Permai 6, Meranit Permai",
+    "streetAddress": "21, Jalan Meranti Permai 6, Meranti Permai",
     "addressLocality": "Puchong",
     "addressRegion": "Selangor",
     "postalCode": "47120",

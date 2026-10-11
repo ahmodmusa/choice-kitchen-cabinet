@@ -70,7 +70,7 @@ During technical review of the `LocalBusiness` JSON-LD schema across the 184 gen
   ```json
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "21, Jalan Meranti Permai 6, Meranit Permai",
+    "streetAddress": "21, Jalan Meranti Permai 6, Meranti Permai",
     "addressLocality": "Puchong",
     "addressRegion": "Selangor",
     "postalCode": "47120",
@@ -78,7 +78,7 @@ During technical review of the `LocalBusiness` JSON-LD schema across the 184 gen
   }
   ```
 * **Map Provenance:** Confirmed by Google Maps embed in `_includes/footer.njk` (`Choice Kitchen Cabinet`, Puchong Meranti Permai, Selangor).
-* **Observed Typographical Note:** The street address contains `"Meranit Permai"` which is a known localized typo for `"Meranti Permai"`. Because changing this string could alter external Google citation matching, it is preserved as-is.
+* **Observed Typographical Note:** The street address formerly contained `"Meranit Permai"`, which was confirmed as a typo for `"Meranti Permai"` and has been corrected site-wide across configuration, footer, contact page, and JSON-LD structured data.
 * **Service Area Integrity:** All 166 location pages and 12 city hubs represent their respective towns via `areaServed` (e.g., `{"@type": "AdministrativeArea", "name": "Wangsa Maju"}`), eliminating deceptive branch-office schema signals.
 
 ---
