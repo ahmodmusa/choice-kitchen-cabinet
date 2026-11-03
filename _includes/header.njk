@@ -1,21 +1,28 @@
 <header class="site-header">
   <div class="header-content">
     <a href="/" class="logo">
-      <img src="/assets/images/choice-logo.svg?v=1" alt="{{ site.name }}" class="logo-img">
+      <img src="/assets/images/choice-logo.svg?v=1" alt="" class="logo-img" width="44" height="44">
       <span class="logo-text">Choice Kitchen Cabinet</span>
     </a>
 
     <nav class="main-nav">
-      <button class="nav-toggle" aria-label="Toggle navigation">
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu">
         <span></span>
         <span></span>
         <span></span>
       </button>
 
-      <ul class="nav-menu">
+      <ul class="nav-menu" id="nav-menu">
+        <li class="nav-lang"><div class="lang-switcher" role="group" aria-label="Language">
+          <button class="lang-btn active" onclick="setLang('en')" aria-label="English">EN</button>
+          <button class="lang-btn" onclick="setLang('bm')" aria-label="Bahasa Malaysia">BM</button>
+          <button class="lang-btn" onclick="setLang('zh')" aria-label="中文">中文</button>
+          <button class="lang-btn" onclick="setLang('ta')" aria-label="தமிழ்">தமிழ்</button>
+        </div></li>
         <li><a href="/">Home</a></li>
         <li><a href="/area-coverage/">Service Areas</a></li>
         <li><a href="/about-us/">About Us</a></li>
+        <li><a href="/kitchen-cabinet-guides/">Guides</a></li>
         <li><a href="/contact-us/">Contact</a></li>
         <li class="nav-cta">
           <a href="{{ site.whatsappUrl }}" class="btn btn-primary" rel="nofollow noopener">
@@ -25,7 +32,7 @@
       </ul>
     </nav>
 
-    <div class="lang-switcher">
+    <div class="lang-switcher" role="group" aria-label="Language">
       <button class="lang-btn active" onclick="setLang('en')" aria-label="English">EN</button>
       <button class="lang-btn" onclick="setLang('bm')" aria-label="Bahasa Malaysia">BM</button>
       <button class="lang-btn" onclick="setLang('zh')" aria-label="中文">中文</button>

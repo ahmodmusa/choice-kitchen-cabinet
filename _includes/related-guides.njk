@@ -3,9 +3,9 @@
     <h2 class="section-title">Kitchen Cabinet Guides</h2>
     <p class="section-desc">Practical reading before you plan or order your cabinets.</p>
   </div>
-  <ul style="list-style: none; max-width: 860px; margin: 0 auto; padding: 0; display: grid; gap: 12px;">
+  <ul class="guide-list">
     {% for g in guides %}{% if g.url != page.url %}
-    <li><a href="{{ g.url }}" style="color: var(--copper); font-weight: 600;">{{ g.title }}</a> <span style="color: var(--warm-gray);">&mdash; {{ g.blurb }}</span></li>
+    <li><a href="{{ g.url }}">{{ g.title }}</a><span>{{ g.blurb }}</span></li>
     {% endif %}{% endfor %}
   </ul>
   <p style="text-align:center;margin-top:16px;"><a href="/kitchen-cabinet-guides/" style="color: var(--copper);">All guides</a></p>

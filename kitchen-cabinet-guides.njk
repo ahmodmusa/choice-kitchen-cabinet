@@ -8,15 +8,19 @@ city: null
 area: null
 ---
 {% include 'breadcrumbs.njk' %}
-<section class="seo-article" style="background: var(--warm-white); padding: 60px 8%;">
-  <div class="seo-article-content" style="max-width: 860px; margin: 0 auto;">
-    <h1 style="font-family: var(--serif); font-size: clamp(30px, 4vw, 44px); color: var(--walnut); line-height: 1.25; margin-bottom: 16px;">Kitchen Cabinet Guides</h1>
-    <p style="font-size: 18px; line-height: 1.8; color: var(--text-body); margin-bottom: 28px;">Practical, plain-language guides to help you plan, choose, measure and look after kitchen cabinets.</p>
-    <ul style="list-style: none; padding: 0; display: grid; gap: 18px;">
+<header class="hero hero--page">
+  <div class="hero-text">
+    <h1>Kitchen Cabinet Guides</h1>
+    <p class="hero-sub">Practical, plain-language guides to help you plan, choose, measure and look after kitchen cabinets.</p>
+  </div>
+</header>
+<section class="seo-article">
+  <div class="seo-article-content" style="max-width: 1000px;">
+    <ul class="guide-list">
       {% for g in guides %}
-      <li><a href="{{ g.url }}" style="font-family: var(--serif); font-size: 22px; color: var(--copper); font-weight: 600;">{{ g.title }}</a><br><span style="color: var(--text-body);">{{ g.blurb }}</span></li>
+      <li><a href="{{ g.url }}">{{ g.title }}</a><span>{{ g.blurb }}</span></li>
       {% endfor %}
     </ul>
-    <p style="margin-top: 32px; color: var(--text-body);">Ready to talk about your kitchen? <a href="/contact-us/" style="color: var(--copper); font-weight: 600;">Contact us</a> or browse the <a href="/area-coverage/" style="color: var(--copper); font-weight: 600;">areas we serve</a>.</p>
+    <p style="margin-top: 36px;">Ready to talk about your kitchen? <a href="/contact-us/">Contact us</a> or browse the <a href="/area-coverage/">areas we serve</a>.</p>
   </div>
 </section>

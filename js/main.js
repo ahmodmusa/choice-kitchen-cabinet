@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (navToggle && navMenu) {
     navToggle.addEventListener('click', function() {
-      navMenu.classList.toggle('active');
+      const open = navMenu.classList.toggle('active');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
   }
 
@@ -14,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
   navLinks.forEach(link => {
     link.addEventListener('click', function() {
       navMenu.classList.remove('active');
+      if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
     });
   });
 
@@ -99,6 +101,18 @@ document.addEventListener('DOMContentLoaded', function() {
   window.trackWhatsAppClick = trackWhatsAppClick;
   window.trackPhoneClick = trackPhoneClick;
   window.trackEmailClick = trackEmailClick;
+
+
+  // Gentle scroll reveal (progressive enhancement; skipped for reduced-motion users)
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const targets = document.querySelectorAll('.feature-card, .product-card, .process-step, .testi-card, .city-card, .freebie-card, .faq-item, .section-header, .guide-list li');
+    const io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    targets.forEach(function(el) {
+      if (el.getBoundingClientRect().top > window.innerHeight) { el.classList.add('reveal'); io.observe(el); }
+    });
+  }
 
   // Hero Slider Functionality
   const heroSlider = document.querySelector('.hero-slider');
