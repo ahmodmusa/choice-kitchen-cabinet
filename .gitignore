@@ -4,3 +4,6 @@ data-exports/
 *.log
 
 .privacy-preview/
+.privacy-off-test/
+.privacy-published-test/
+.privacy-preview-test/

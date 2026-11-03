@@ -80,7 +80,10 @@ if (fs.existsSync(nf)) {
 assert(!sitemapPaths.includes('/404.html') && !sitemapPaths.includes('/404/'), '404 page must not be in sitemap.xml');
 
 section('Sitemap integrity');
-assert(sitemapUrls.length === 186, `sitemap must contain 186 URLs, found ${sitemapUrls.length}`);
+const privacy = require('../_data/privacy.js');
+const PUBLISHED = privacy.mode === 'published';
+const EXPECTED_URLS = PUBLISHED ? 187 : 186; // 186 before privacy approval, 187 after
+assert(sitemapUrls.length === EXPECTED_URLS, `sitemap must contain ${EXPECTED_URLS} URLs (privacy mode ${privacy.mode}), found ${sitemapUrls.length}`);
 assert(new Set(sitemapUrls).size === sitemapUrls.length, 'sitemap URLs must be unique');
 let badSitemap = 0;
 sitemapUrls.forEach((u) => {
@@ -226,9 +229,19 @@ section('Phase 1C: restored cleaning article, privacy gate, legacy category');
   assert(!redirectSources.has('/' + slug + '/') && !redirectSources.has('/' + slug), 'cleaning article must not be redirected');
 
   // Privacy policy is gated: in the default build it must not exist anywhere (see _data/privacy.js)
-  assert(!fs.existsSync(path.join(siteDir, 'privacy-policy')), 'privacy policy must NOT be built until the owner approves it');
-  assert(!sitemapPaths.includes('/privacy-policy/'), 'unapproved privacy policy must not be in sitemap');
-  assert(!htmlFiles.some((f) => /href="\/privacy-policy\/"/.test(read(f))), 'no page may link to an unpublished privacy policy');
+  const ppFile = path.join(siteDir, 'privacy-policy', 'index.html');
+  if (PUBLISHED) {
+    assert(fs.existsSync(ppFile), 'approved privacy policy must be built');
+    const pp = fs.existsSync(ppFile) ? read(ppFile) : '';
+    assert(sitemapPaths.includes('/privacy-policy/'), 'approved privacy policy must be in sitemap');
+    assert(pp.includes('<link rel="canonical" href="' + ORIGIN + '/privacy-policy/">') && !/name="robots"[^>]*noindex/.test(pp), 'approved privacy policy must be self-canonical and indexable');
+    assert(htmlFiles.filter((f) => rel(f) !== '404.html').every((f) => read(f).includes('href="/privacy-policy/"')), 'footer on every page must link to the approved privacy policy');
+  } else {
+    assert(!fs.existsSync(path.join(siteDir, 'privacy-policy')), 'privacy policy must NOT be built until the owner approves it');
+    assert(!sitemapPaths.includes('/privacy-policy/'), 'unapproved privacy policy must not be in sitemap');
+    assert(!htmlFiles.some((f) => read(f).includes('href="/privacy-policy/"')), 'no page may link to an unpublished privacy policy');
+  }
+  assert(!htmlFiles.some((f) => /OWNER TO CONFIRM|NOT APPROVED|YOUR_FACEBOOK_PIXEL_ID/.test(read(f))), 'no unfinished placeholder may appear in any built page');
   assert(!redirectSources.has('/privacy-policy/') && !redirectSources.has('/privacy-policy') && !redirectSources.has('/category/kitchen-cabinet/') && !redirectSources.has('/category/kitchen-cabinet'), 'privacy-policy and legacy category must not be redirected to the homepage');
   assert(!fs.existsSync(path.join(siteDir, 'category')), 'legacy /category/ has no equivalent page and must stay 404');
 }

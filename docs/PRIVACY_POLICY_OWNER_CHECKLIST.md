@@ -10,15 +10,15 @@ PRIVACY_PREVIEW=1 npx eleventy --output=.privacy-preview
 এতে `.privacy-preview/privacy-policy/index.html` তৈরি হয়: "DRAFT — NOT APPROVED" ব্যানার, `noindex`, ফাঁকা তথ্য `[OWNER TO CONFIRM: …]` হিসেবে দেখায়। `_site` বদলায় না।
 
 ## প্রকাশের দুটি শর্ত (দুটোই কোডে বাধ্যতামূলক)
-1. `_data/privacy.js`-এর `facts`-এর সব ঘর পূরণ।
+1. `_data/privacy.js`-এর ৭টি `facts`-এর প্রতিটিতে `value` পূরণ **এবং** `verified: true` (প্রমাণসহ)।
 2. একই ফাইলে `approved = true`। কোনো ঘর ফাঁকা থেকে `approved = true` করলে build ব্যর্থ হয় (টেস্ট করা আছে)।
 
 ## A. মালিককে যে তথ্য দিতে হবে (আমি অনুমান করিনি)
 | # | `facts` key | কী লাগবে | বর্তমান অবস্থা |
 |---|---|---|---|
-| 1 | `legalEntityName` | ওয়েবসাইট পরিচালনাকারী প্রতিষ্ঠানের নিবন্ধিত নাম (SSM অনুযায়ী) | অজানা — WP ডেটায় "A&C Services" নামটি পাওয়া গিয়েছিল কিন্তু এটি এই সাইটের বৈধ সত্তা কি না **যাচাই হয়নি** |
+| 1 | `legalEntityName` | Choice-এর নিবন্ধিত প্রতিষ্ঠানের নাম (SSM অনুযায়ী) | **অনুপলব্ধ** — কোড, WP export, লাইভ সাইটে নেই। ⚠️ "A&C Services" হলো **Orked-এর** `legalName`, Choice-এর নয় — ব্যবহার করা যাবে না |
 | 2 | `privacyContactEmail` | গোপনীয়তা-সংক্রান্ত অনুরোধ যে ইমেইলে আসবে | `admin@mychoicecabinet.com` সাইটে প্রকাশিত, কিন্তু এটিই privacy contact কি না আপনাকে নিশ্চিত করতে হবে |
-| 3 | `privacyContactPhone` | ফোন (ঐচ্ছিক; না দিলে `none`) | `+60 17-836 0455` সাইটে আছে; নিশ্চিত করুন |
+| 3 | `privacyContactPhone` | জনসমক্ষে প্রকাশিত ব্যবসায়িক ফোন | **VERIFIED** `+60 17-836 0455` (site.json, footer, contact page, লাইভ HTML `tel:`) |
 | 4 | `enquiryRetention` | WhatsApp/ফোন/ইমেইল enquiry রেকর্ড কতদিন রাখেন (আপনার প্রকৃত অনুশীলন) | অজানা — কোনো সময়সীমা বানানো হয়নি |
 | 5 | `analyticsRetention` | GA4 property-তে সেট করা data retention (GA4 Admin → Data settings → Data retention) | অজানা — GA অ্যাক্সেস নেই |
 | 6 | `hostingProvider` | হোস্টিং/CDN প্রদানকারী | বাহ্যিক প্রমাণে Cloudflare Pages; Cloudflare dashboard থেকে **নিশ্চিত হয়নি** |

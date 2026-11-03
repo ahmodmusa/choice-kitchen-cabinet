@@ -167,7 +167,8 @@ assert(fs.existsSync(sitemapPath), 'sitemap.xml must exist in _site');
 
 const sitemapContent = fs.readFileSync(sitemapPath, 'utf8');
 const sitemapUrls = [...sitemapContent.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
-assert(sitemapUrls.length === 186, `Expected 186 sitemap URLs, found ${sitemapUrls.length}`);
+const expectedSitemap = require('../_data/privacy.js').mode === 'published' ? 187 : 186; // 186 before privacy approval, 187 after
+assert(sitemapUrls.length === expectedSitemap, `Expected ${expectedSitemap} sitemap URLs, found ${sitemapUrls.length}`);
 console.log(`PASS: sitemap.xml contains exactly ${sitemapUrls.length} canonical URLs.`);
 
 // Verify both historical blog posts exist in sitemap

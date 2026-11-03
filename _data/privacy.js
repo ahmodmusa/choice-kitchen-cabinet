@@ -1,33 +1,26 @@
-// Privacy Policy publication gate.
+// Privacy Policy facts + approval switch. Gate logic lives in config/privacy-gate.js.
 //
-// The policy text is built from what the website code actually does, but several facts can only be
-// supplied by the business owner (legal entity, retention periods, privacy contact, hosting confirmation).
-// Nothing is published until `approved` is true AND every fact below is filled in.
-//
-//   mode "off"       -> /privacy-policy/ is NOT generated, footer link hidden, not in sitemap (default)
-//   mode "preview"   -> only when PRIVACY_PREVIEW=1: page generated with visible "NOT APPROVED" banner,
-//                       noindex, unfilled facts shown as [OWNER TO CONFIRM: ...]; for owner review only
-//   mode "published" -> approved === true and all facts filled; page + footer link + sitemap entry
-//
-// See docs/PRIVACY_POLICY_OWNER_CHECKLIST.md.
+// Nothing is published until `approved` is true AND every fact is filled AND marked verified.
+// Phase 1D evidence and open items: docs/PRIVACY_POLICY_OWNER_CHECKLIST.md and audit-output/08-PRIVACY-AND-RELEASE-READINESS.md.
+// Do NOT set approved = true without the owner's explicit written approval.
+const { evaluate } = require('../config/privacy-gate');
+
 const facts = {
-  legalEntityName: null,       // exact registered name of the business that operates the website
-  privacyContactEmail: null,   // mailbox that will receive privacy requests (may equal site.email if the owner confirms)
-  privacyContactPhone: null,   // optional channel; set to "none" if not offered
-  enquiryRetention: null,      // how long WhatsApp / phone / email enquiry records are kept (owner's real practice)
-  analyticsRetention: null,    // Google Analytics 4 data-retention setting actually configured in the GA property
-  hostingProvider: null,       // confirmed hosting / CDN provider (external evidence suggests Cloudflare)
-  effectiveDate: null          // ISO date (YYYY-MM-DD) the owner approved the text
+  // Exact registered name of the business operating mychoicecabinet.com. NOT "A&C Services" (that is Orked's legalName).
+  legalEntityName: { value: null, verified: false, evidence: 'No Choice legal/SSM name found in code, WP export or live site' },
+  // Published business email (site.json, contact page, live HTML). Owner must confirm it is the privacy-request mailbox.
+  privacyContactEmail: { value: 'admin@mychoicecabinet.com', verified: false, evidence: 'Published in site.json/contact page/live HTML; privacy-contact designation needs owner confirmation' },
+  // Published business telephone (site.json, contact page, footer, live tel: links).
+  privacyContactPhone: { value: '+60 17-836 0455', verified: true, evidence: 'tel:+60178360455 in site.json, footer, contact page and live production HTML' },
+  // Owner's real enquiry-record retention practice. Nothing documented.
+  enquiryRetention: { value: null, verified: false, evidence: 'Not documented anywhere in project' },
+  // GA4 property retention setting. GA property for G-WY69TY8LTH not reachable from available Google account.
+  analyticsRetention: { value: null, verified: false, evidence: 'GA4 Admin > Data settings > Data retention not accessible' },
+  // DNS/Server header show Cloudflare; Pages project association not visible without dashboard access.
+  hostingProvider: { value: 'Cloudflare', verified: false, evidence: 'NS = cloudflare, Server: cloudflare, pages.dev alias 200; dashboard not accessible' },
+  // ISO date (YYYY-MM-DD) of the owner's approval. Set only at approval time.
+  effectiveDate: { value: null, verified: false, evidence: 'Set when owner approves' }
 };
-const approved = false;        // owner sign-off; flip to true only after checklist is complete
+const approved = false;
 
-const missing = Object.keys(facts).filter((k) => !facts[k]);
-if (approved && missing.length) {
-  throw new Error('privacy.js: approved=true but facts missing: ' + missing.join(', '));
-}
-
-const mode = approved ? 'published' : (process.env.PRIVACY_PREVIEW === '1' ? 'preview' : 'off');
-const f = {};
-for (const k of Object.keys(facts)) f[k] = facts[k] || `[OWNER TO CONFIRM: ${k}]`;
-
-module.exports = { mode, approved, missing, facts: f };
+module.exports = { ...evaluate(facts, approved, process.env.PRIVACY_PREVIEW === '1'), rawFacts: facts };

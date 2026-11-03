@@ -1,10 +1,12 @@
 // Read-only HTTP QA against a deployed site (staging/preview/local emulator). GET/HEAD only.
 // Usage: SITE=choice|orked BASE_URL=https://host node scripts/qa-http.mjs
 const SITE = process.env.SITE;
+// Choice privacy policy state of the target: unpublished (default; 186 sitemap URLs, /privacy-policy/ = 404) or published (187, page live)
+const PRIVACY_PUBLISHED = process.env.EXPECT_PRIVACY === 'published';
 const BASE = (process.env.BASE_URL || '').replace(/\/$/, '');
 const PROFILES = {
   choice: {
-    origin: 'https://www.mychoicecabinet.com', sitemap: '/sitemap.xml', expectUrls: 186,
+    origin: 'https://www.mychoicecabinet.com', sitemap: '/sitemap.xml', expectUrls: PRIVACY_PUBLISHED ? 187 : 186,
     ga: 'G-WY69TY8LTH', wa: 'wa.me/601124771710', tel: 'tel:+60178360455', mail: 'mailto:admin@mychoicecabinet.com',
     hreflang: 'choice',
     legacy: {
@@ -15,7 +17,7 @@ const PROFILES = {
       '/sepang/seri-kembangan-south-sepang-utara/': '/sepang/seri-kembangan-south/',
       '/sepang/kota-warisan-2/': '/sepang/kota-warisan/'
     },
-    notFound: ['/nonexistent-xyz/', '/blog/', '/assets/missing.jpg', '/privacy-policy/', '/category/kitchen-cabinet/'],
+    notFound: ['/nonexistent-xyz/', '/blog/', '/assets/missing.jpg', ...(PRIVACY_PUBLISHED ? [] : ['/privacy-policy/']), '/category/kitchen-cabinet/'],
     separately: [],
     protect: ['/klang/port-klang/', '/shah-alam/sungai-buloh/', '/selayang/rawang/', '/kuala-lumpur/wangsa-maju/', '/selayang/gombak/', '/subang-jaya/puchong/', '/petaling-jaya/petaling-jaya-city-centre/']
   },
@@ -130,6 +132,12 @@ for (const p of P.protect) {
   const h = r.status === 200 ? await r.text() : '';
   const c = (h.match(/<link rel="canonical" href="([^"]+)"/) || [])[1];
   ok(r.status === 200 && c === P.origin + p && /LocalBusiness|HomeAndConstructionBusiness/.test(h), `protected ${p}: ${r.status}, canonical ${c}, schema present`);
+}
+if (SITE === 'choice' && PRIVACY_PUBLISHED) {
+  const r = await get('/privacy-policy/');
+  const h = r.status === 200 ? await r.text() : '';
+  ok(r.status === 200 && h.includes('<link rel="canonical" href="' + P.origin + '/privacy-policy/">') && !/noindex/.test(h) && !/OWNER TO CONFIRM|NOT APPROVED/.test(h) && /id="bahasa-malaysia"/.test(h), 'published privacy policy: 200, self-canonical, indexable, bilingual, no placeholders');
+  ok(paths.includes('/privacy-policy/'), 'published privacy policy is in the sitemap');
 }
 for (const p of P.separately) { const r = await get(p); console.log(`INFO separately-reviewed ${p} -> ${r.status}`); }
 
