@@ -5,6 +5,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("images");
   eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addPassthroughCopy("robots.txt");
+  eleventyConfig.addPassthroughCopy("_redirects");
   
   // Add filters
   eleventyConfig.addFilter("slugify", function(str) {
@@ -18,6 +19,12 @@ module.exports = function(eleventyConfig) {
     return str.toLowerCase()
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/(^-|-$)/g, '');
+  });
+
+  // Escape a raw string for safe use *inside* a JSON-LD string literal.
+  // Nunjucks autoescape would otherwise emit HTML entities (e.g. "&amp;") into JSON.
+  eleventyConfig.addFilter("jsonString", function(str) {
+    return JSON.stringify(String(str == null ? "" : str)).slice(1, -1).replace(/</g, "\u003c");
   });
 
   eleventyConfig.addFilter("limit", function(arr, limit) {

@@ -9,6 +9,38 @@ area: null
 ---
 {% include 'breadcrumbs.njk' %}
 
+<!-- Article Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Organize Kitchen Cabinets: Practical Storage Tips for Malaysian Homes",
+  "description": "{{ description | jsonString | safe }}",
+  "author": {
+    "@type": "Organization",
+    "name": "Choice Kitchen Cabinet",
+    "url": "{{ site.url }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Choice Kitchen Cabinet",
+    "url": "{{ site.url }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ site.url }}/assets/images/choice-logo.svg"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ site.url }}/how-to-organize-kitchen-cabinets/"
+  },
+  "image": "{{ site.url }}/assets/images/recent-work-1.jpg",
+  "datePublished": "2024-05-16",
+  "dateModified": "2026-10-11"
+}
+</script>
+
+
 <section class="seo-article" style="background: var(--warm-white); padding: 60px 8%;">
   <div class="seo-article-content" style="max-width: 860px; margin: 0 auto;">
     

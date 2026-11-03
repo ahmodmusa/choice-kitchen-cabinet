@@ -1,0 +1,16 @@
+# Legacy WordPress URLs that now exist under a corrected Eleventy slug (same area/location).
+# Only exact, same-topic mappings are listed. Other legacy URLs
+# (e.g. /tips-for-cleaning-kitchen-cabinets/, /privacy-policy/, /category/*) are intentionally NOT
+# redirected to the homepage; they return the real 404 page.
+/petaling-jaya/best-price-kitchen-cabinets-in-ara-damansara-month-year   /petaling-jaya/ara-damansara/   301
+/petaling-jaya/best-price-kitchen-cabinets-in-ara-damansara-month-year/  /petaling-jaya/ara-damansara/   301
+/petaling-jaya/best-price-kitchen-cabinets-in-kota-damansara-month-year   /petaling-jaya/kota-damansara/   301
+/petaling-jaya/best-price-kitchen-cabinets-in-kota-damansara-month-year/  /petaling-jaya/kota-damansara/   301
+/petaling-jaya/best-price-kitchen-cabinets-in-petaling-jaya-selatan-month-year   /petaling-jaya/petaling-jaya-selatan/   301
+/petaling-jaya/best-price-kitchen-cabinets-in-petaling-jaya-selatan-month-year/  /petaling-jaya/petaling-jaya-selatan/   301
+/ampang-jaya/pandan-pandan-indah   /ampang-jaya/pandan-indah/   301
+/ampang-jaya/pandan-pandan-indah/  /ampang-jaya/pandan-indah/   301
+/sepang/seri-kembangan-south-sepang-utara   /sepang/seri-kembangan-south/   301
+/sepang/seri-kembangan-south-sepang-utara/  /sepang/seri-kembangan-south/   301
+/sepang/kota-warisan-2   /sepang/kota-warisan/   301
+/sepang/kota-warisan-2/  /sepang/kota-warisan/   301

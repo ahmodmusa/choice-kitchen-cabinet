@@ -176,6 +176,7 @@ assert(sitemapUrls.includes('https://www.mychoicecabinet.com/calculating-kitchen
 
 let canonicalMismatchCount = 0;
 htmlFiles.forEach(file => {
+  if (path.basename(file) === '404.html') return; // 404 page is intentionally noindex without canonical
   const html = fs.readFileSync(file, 'utf8');
   const canonicalMatch = html.match(/<link rel="canonical" href="([^"]+)"/);
   if (!canonicalMatch) {
@@ -250,7 +251,8 @@ assert(blog2Html.includes('How to Calculate Kitchen Cabinet Space: The Practical
 assert(blog2Html.includes('<link rel="canonical" href="https://www.mychoicecabinet.com/calculating-kitchen-cabinet-space/">'), 'Blog 2 must have self canonical');
 assert(!blog2Html.includes('hreflang="en-MY"'), 'Blog post 2 must NOT have ?lang= hreflangs');
 assert(blog2Html.includes('"@type": "Article"'), 'Blog post 2 must have Article structured data');
-assert(blog2Html.includes('"@type": "FAQPage"'), 'Blog post 2 must have FAQPage structured data');
+// FAQPage markup removed from blog post 2: its Q&A was not visible on the page (Google FAQ guideline). See test-technical-seo.js.
+assert(!blog2Html.includes('"@type": "FAQPage"'), 'Blog post 2 must not carry invisible FAQPage markup');
 console.log('PASS: Both blog posts structure, self-canonicals, Article/FAQ schemas, and hreflang exclusions verified.');
 
 // TEST 9: Phase 2B Five-Page CTR Title and Description Verification

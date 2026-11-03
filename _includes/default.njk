@@ -1274,7 +1274,7 @@
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "{{ site.name }}",
-  "description": "{{ description }}",
+  "description": "{{ description | jsonString | safe }}",
   "url": "{{ site.url }}",
   "telephone": "{{ site.phone }}",
   "email": "{{ site.email }}",
@@ -1301,7 +1301,7 @@
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "{{ site.name }}",
-  "description": "{{ description }}",
+  "description": "{{ description | jsonString | safe }}",
   "url": "{{ site.url }}",
   "telephone": "{{ site.phone }}",
   "email": "{{ site.email }}",
@@ -1334,7 +1334,7 @@
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "{{ site.name }}",
-  "description": "{{ description }}",
+  "description": "{{ description | jsonString | safe }}",
   "url": "{{ site.url }}",
   "telephone": "{{ site.phone }}",
   "email": "{{ site.email }}",
@@ -1384,7 +1384,7 @@
 }
 </script>
 
-{% if not city and not area %}
+{% if page.url == "/" %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
