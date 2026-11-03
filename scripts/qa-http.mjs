@@ -37,7 +37,9 @@ if (!P || !BASE) { console.error('Set SITE=choice|orked and BASE_URL'); process.
 let pass = 0, fail = 0;
 const failures = [];
 const ok = (c, m) => { if (c) pass++; else { fail++; failures.push(m); console.error('FAIL: ' + m); } };
-const get = (p, opts = {}) => fetch(BASE + p, { redirect: 'manual', headers: { 'user-agent': 'Mozilla/5.0 (qa-http)' }, ...opts });
+// Optional Cloudflare Access service token for Access-protected previews (CF_ACCESS_CLIENT_ID / CF_ACCESS_CLIENT_SECRET)
+const ACCESS = process.env.CF_ACCESS_CLIENT_ID && process.env.CF_ACCESS_CLIENT_SECRET ? { 'CF-Access-Client-Id': process.env.CF_ACCESS_CLIENT_ID, 'CF-Access-Client-Secret': process.env.CF_ACCESS_CLIENT_SECRET } : {};
+const get = (p, opts = {}) => fetch(BASE + p, { redirect: 'manual', headers: { 'user-agent': 'Mozilla/5.0 (qa-http)', ...ACCESS }, ...opts });
 const loc = (r, p) => { const l = r.headers.get('location'); return l ? new URL(l, BASE + p).href.replace(BASE, '') : ''; };
 
 // ---- sitemap
