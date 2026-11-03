@@ -278,7 +278,7 @@ section('Growth release: guides, location metadata, same-name areas, conversion 
   });
   assert(badTitle === 0, 'all titles unique, non-empty and bounded; descriptions present (' + badTitle + ' problems)');
   // performance hints on the homepage LCP image and responsive gallery images
-  assert(/<img[^>]*hero-image-1[^>]*\.jpg[^>]*fetchpriority="high"/.test(hub), 'homepage hero image must be fetchpriority=high');
+  assert(/<img[^>]*recent-work-4[^>]*\.jpg[^>]*fetchpriority="high"/.test(hub), 'homepage hero image must be fetchpriority=high');
   assert(!/<link href="https:\/\/fonts\.googleapis\.com[^>]*rel="stylesheet">/.test(hub.replace(/<noscript>[\s\S]*?<\/noscript>/g, '')), 'Google Fonts stylesheet must not be render-blocking');
   const imgs = new Set(); htmlFiles.forEach((f) => { for (const m of read(f).matchAll(/(?:src|srcset)="(\/assets\/images\/[^"\s,]+)/g)) imgs.add(m[1].split('?')[0]); });
   const missing = [...imgs].filter((p) => !fs.existsSync(path.join(siteDir, p)));
