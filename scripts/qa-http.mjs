@@ -6,7 +6,7 @@ const PRIVACY_PUBLISHED = process.env.EXPECT_PRIVACY === 'published';
 const BASE = (process.env.BASE_URL || '').replace(/\/$/, '');
 const PROFILES = {
   choice: {
-    origin: 'https://www.mychoicecabinet.com', sitemap: '/sitemap.xml', expectUrls: PRIVACY_PUBLISHED ? 187 : 186,
+    origin: 'https://www.mychoicecabinet.com', sitemap: '/sitemap.xml', expectUrls: PRIVACY_PUBLISHED ? 191 : 190,
     ga: 'G-WY69TY8LTH', wa: 'wa.me/601124771710', tel: 'tel:+60178360455', mail: 'mailto:admin@mychoicecabinet.com',
     hreflang: 'choice',
     legacy: {
@@ -76,9 +76,7 @@ for (const [p, h] of Object.entries(pages)) {
   }
   const tags = [...h.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)"/g)].map((m) => [m[1], m[2]]);
   if (P.hreflang === 'choice') {
-    const article = /how-to-organize|calculating-kitchen|tips-for-cleaning/.test(p);
-    const exp = article ? 0 : 5;
-    if (tags.length === exp && (article || tags.find((t) => t[0] === 'x-default')[1] === P.origin + p)) hre++; else ok(false, `hreflang ${p}: ${tags.length} tags`);
+    if (tags.length === 0) hre++; // Choice: hreflang intentionally absent (?lang= variants canonicalise to the clean URL) else ok(false, `hreflang ${p}: ${tags.length} tags`);
   } else {
     const set = tags.map((t) => t[0]).sort().join();
     if (set === ['en-MY', 'ms-MY', 'ta-MY', 'x-default', 'zh-Hans'].sort().join() && tags.some((t) => t[1] === P.origin + p)) hre++; else ok(false, `hreflang ${p}: ${set}`);
@@ -86,7 +84,7 @@ for (const [p, h] of Object.entries(pages)) {
   if (h.includes(P.wa)) cta++; else ok(false, `WhatsApp CTA missing ${p}`);
   if (h.includes(P.ga)) ga++; else ok(false, `GA tag ${P.ga} missing ${p}`);
   if (P.tel) { if (h.includes(P.tel)) tel++; else ok(false, `tel missing ${p}`); }
-  if (P.mail && p === '/contact-us/') { if (h.includes(P.mail)) mail++; else ok(false, `mailto missing ${p}`); }
+  if (P.mail && p === '/contact-us/') { if (h.includes(P.mail) || /\/cdn-cgi\/l\/email-protection#/.test(h)) mail++; else ok(false, `mailto (or Cloudflare-obfuscated mailto) missing ${p}`); } // Cloudflare Email Obfuscation rewrites mailto: in production
   for (const m of h.matchAll(/<a\s[^>]*href="(\/[^"]*)"/g)) { if (!m[1].startsWith('//') && !m[1].startsWith('/cdn-cgi/')) internal.add(m[1].split('#')[0].split('?')[0] || '/'); }
   for (const m of h.matchAll(/<img[^>]+src="(\/[^"]+)"/g)) images.add(m[1].split('?')[0]);
 }

@@ -1,0 +1,53 @@
+---
+layout: default.njk
+---
+{% include 'breadcrumbs.njk' %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{ headline | jsonString | safe }}",
+  "description": "{{ description | jsonString | safe }}",
+  "author": { "@type": "Organization", "name": "Choice Kitchen Cabinet", "url": "{{ site.url }}" },
+  "publisher": { "@type": "Organization", "name": "Choice Kitchen Cabinet", "url": "{{ site.url }}", "logo": { "@type": "ImageObject", "url": "{{ site.url }}/assets/images/choice-logo.svg" } },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "{{ site.url }}{{ page.url }}" },
+  "datePublished": "{{ datePublished }}",
+  "dateModified": "{{ dateModified }}"
+}
+</script>
+
+<style>
+  .guide-body h2 { font-family: var(--serif); font-size: clamp(24px, 2.5vw, 30px); color: var(--walnut); margin: 36px 0 16px; border-top: 1px solid rgba(61,43,31,0.08); padding-top: 24px; }
+  .guide-body h3 { font-family: var(--serif); font-size: 21px; color: var(--walnut); margin: 24px 0 10px; }
+  .guide-body p, .guide-body li { font-size: 16px; line-height: 1.8; color: var(--text-body); }
+  .guide-body p { margin-bottom: 20px; }
+  .guide-body ul, .guide-body ol { margin-bottom: 24px; padding-left: 24px; }
+  .guide-body a { color: var(--copper); font-weight: 600; }
+  .guide-body table { width: 100%; border-collapse: collapse; margin: 0 0 28px; font-size: 15px; }
+  .guide-body th, .guide-body td { text-align: left; padding: 10px 12px; border: 1px solid rgba(61,43,31,0.15); vertical-align: top; line-height: 1.6; color: var(--text-body); }
+  .guide-body th { background: var(--cream); color: var(--walnut); }
+  .guide-table-wrap { overflow-x: auto; }
+</style>
+<section class="seo-article" style="background: var(--warm-white); padding: 60px 8%;">
+  <div class="seo-article-content guide-body" style="max-width: 860px; margin: 0 auto;">
+    <header style="margin-bottom: 36px; border-bottom: 1px solid rgba(61,43,31,0.1); padding-bottom: 24px;">
+      <p style="text-transform: uppercase; letter-spacing: 0.1em; font-size: 13px; font-weight: 600; color: var(--copper); margin-bottom: 12px;">{{ kicker }}</p>
+      <h1 style="font-family: var(--serif); font-size: clamp(30px, 4vw, 44px); color: var(--walnut); line-height: 1.25; margin-bottom: 16px;">{{ headline }}</h1>
+      <p style="font-size: 14px; color: var(--warm-gray); margin-bottom: 0;">Published by Choice Kitchen Cabinet &bull; Updated {{ updatedLabel }}</p>
+    </header>
+
+    {{ content | safe }}
+
+    <div style="background: var(--cream); border: 1px solid rgba(61,43,31,0.12); border-radius: 16px; padding: 36px 32px; text-align: center; margin-top: 48px;">
+      <h2 style="font-family: var(--serif); font-size: 26px; color: var(--walnut); margin: 0 0 16px; border: 0; padding: 0;">Planning New Kitchen Cabinets?</h2>
+      <p style="max-width: 640px; margin: 0 auto 24px;">Send us your kitchen size and preferred materials on WhatsApp and we will discuss options and a quotation with you.</p>
+      <a href="{{ site.whatsappUrl }}" class="btn-wa" rel="nofollow noopener" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; margin: 0 auto; text-decoration: none; color: #fff;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.549 4.107 1.51 5.843L0 24l6.335-1.486A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.807 9.807 0 01-5.032-1.383l-.36-.214-3.742.878.9-3.647-.235-.374A9.768 9.768 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+        <span>Chat on WhatsApp</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+{% include 'related-guides.njk' %}

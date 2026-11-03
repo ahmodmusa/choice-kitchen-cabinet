@@ -49,7 +49,7 @@ async function get(p) {
   const smRes = await get('/sitemap.xml');
   ok(smRes.status === 200, 'sitemap.xml should be 200');
   const urls = [...(await smRes.text()).matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1].replace(ORIGIN, ''));
-  ok(urls.length === (process.env.EXPECT_PRIVACY === 'published' ? 187 : 186), `sitemap should list ${process.env.EXPECT_PRIVACY === 'published' ? 187 : 186} URLs, found ${urls.length}`);
+  ok(urls.length === (process.env.EXPECT_PRIVACY === 'published' ? 191 : 190), `sitemap should list ${process.env.EXPECT_PRIVACY === 'published' ? 191 : 190} URLs, found ${urls.length}`);
   let bad = 0;
   for (const u of urls) {
     const r = await get(u);

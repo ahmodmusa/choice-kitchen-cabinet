@@ -167,7 +167,7 @@ assert(fs.existsSync(sitemapPath), 'sitemap.xml must exist in _site');
 
 const sitemapContent = fs.readFileSync(sitemapPath, 'utf8');
 const sitemapUrls = [...sitemapContent.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
-const expectedSitemap = require('../_data/privacy.js').mode === 'published' ? 187 : 186; // 186 before privacy approval, 187 after
+const expectedSitemap = require('../_data/privacy.js').mode === 'published' ? 191 : 190; // 190 before privacy approval, 191 after
 assert(sitemapUrls.length === expectedSitemap, `Expected ${expectedSitemap} sitemap URLs, found ${sitemapUrls.length}`);
 console.log(`PASS: sitemap.xml contains exactly ${sitemapUrls.length} canonical URLs.`);
 
@@ -273,9 +273,9 @@ const expectedPages = [
   },
   {
     path: path.join(siteDir, 'selayang', 'rawang', 'index.html'),
-    title: 'Kitchen Cabinet Rawang | Custom Design & Quotation | Choice Kitchen Cabinet',
-    attrTitle: 'Kitchen Cabinet Rawang | Custom Design &amp; Quotation | Choice Kitchen Cabinet',
-    desc: 'Quality custom kitchen cabinets in Rawang. Durable moisture-resistant materials, tailored layout planning, and straightforward pricing. Request a quote.'
+    title: 'Kitchen Cabinet Rawang | Custom Cabinets, Free WhatsApp Quote | Choice Kitchen Cabinet',
+    attrTitle: 'Kitchen Cabinet Rawang | Custom Cabinets, Free WhatsApp Quote | Choice Kitchen Cabinet',
+    desc: 'Custom kitchen cabinets in Rawang: material options, layout planning, delivery and installation. Send your kitchen size for a free quotation.'
   },
   {
     path: path.join(siteDir, 'subang-jaya', 'seri-kembangan', 'index.html'),

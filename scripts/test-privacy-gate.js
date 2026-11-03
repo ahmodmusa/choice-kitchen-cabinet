@@ -3,7 +3,7 @@
 //  2. The real repository state (_data/privacy.js) is internally consistent.
 //  3. Three throw-away builds in repo-local temp folders (the real _site and real _data are never touched):
 //       OFF        default      -> policy not built, no footer link, sitemap 186
-//       PREVIEW    PRIVACY_PREVIEW=1 -> noindex draft with banner and placeholders, not in sitemap (186)
+//       PREVIEW    PRIVACY_PREVIEW=1 -> noindex draft with banner and placeholders, not in sitemap (190)
 //       PUBLISHED  fixture with approved=true and fully verified FICTIONAL facts -> indexable page, footer link,
 //                  sitemap 187, no placeholders. Fixture values exist only inside the temp copy.
 // Usage: node scripts/test-privacy-gate.js
@@ -86,7 +86,7 @@ try {
   copyRepo(dirs[0]);
   const off = build(dirs[0], {});
   assert(!fs.existsSync(path.join(off, 'privacy-policy')), 'OFF: policy must not be built');
-  assert(sitemapCount(off) === 186, 'OFF: sitemap must have 186 URLs, found ' + sitemapCount(off));
+  assert(sitemapCount(off) === 190, 'OFF: sitemap must have 190 URLs, found ' + sitemapCount(off));
   assert(!rd(path.join(off, 'index.html')).includes('/privacy-policy/'), 'OFF: footer must not link to the policy');
 
   // PREVIEW
@@ -95,7 +95,7 @@ try {
   const pvPage = rd(path.join(pv, 'privacy-policy', 'index.html'));
   assert(/<meta name="robots" content="noindex">/.test(pvPage), 'PREVIEW: must be noindex');
   assert(/NOT APPROVED/.test(pvPage) && /OWNER TO CONFIRM/.test(pvPage), 'PREVIEW: banner and placeholders must be visible');
-  assert(sitemapCount(pv) === 186 && !rd(path.join(pv, 'sitemap.xml')).includes('/privacy-policy/'), 'PREVIEW: not in sitemap (186)');
+  assert(sitemapCount(pv) === 190 && !rd(path.join(pv, 'sitemap.xml')).includes('/privacy-policy/'), 'PREVIEW: not in sitemap (186)');
   assert(rd(path.join(pv, 'index.html')).includes('href="/privacy-policy/"'), 'PREVIEW: footer links to the draft for owner review');
 
   // PUBLISHED (fixture)
@@ -111,12 +111,12 @@ module.exports = evaluate(facts, true, false);\n`;
   const text = strip(page);
   assert(!/name="robots"[^>]*noindex/.test(page), 'PUBLISHED: must be indexable');
   assert(page.includes('<link rel="canonical" href="https://www.mychoicecabinet.com/privacy-policy/">'), 'PUBLISHED: self-canonical');
-  assert(!/hreflang/.test(page.replace(/<script[\s\S]*?<\/script>/g, '')) || !/<link rel="alternate" hreflang/.test(page), 'PUBLISHED: no hreflang tags');
+  assert(!/<link rel="alternate" hreflang/.test(page), 'PUBLISHED: no hreflang tags');
   assert(!/OWNER TO CONFIRM|DRAFT|NOT APPROVED|\[OWNER/.test(page), 'PUBLISHED: no placeholder or draft marker may reach production');
   assert(text.includes('Fixture Cabinet Sdn Bhd') && text.includes('privacy@fixture.test') && text.includes('2026-12-01') && text.includes('Fixture retention statement.'), 'PUBLISHED: all supplied facts appear in the policy');
   assert(/id="english"[^>]*lang="en"/.test(page) && /id="bahasa-malaysia"[^>]*lang="ms"/.test(page), 'PUBLISHED: EN and BM versions present');
   TOPICS.forEach((k) => assert(text.includes(k), 'PUBLISHED: policy mentions ' + k));
-  assert(sitemapCount(pub) === 187, 'PUBLISHED: sitemap must have 187 URLs, found ' + sitemapCount(pub));
+  assert(sitemapCount(pub) === 191, 'PUBLISHED: sitemap must have 191 URLs, found ' + sitemapCount(pub));
   assert(rd(path.join(pub, 'sitemap.xml')).includes('<loc>https://www.mychoicecabinet.com/privacy-policy/</loc>'), 'PUBLISHED: policy in sitemap');
   ['index.html', 'about-us/index.html', 'tips-for-cleaning-kitchen-cabinets/index.html', 'petaling-jaya/index.html'].forEach((p) => {
     assert(rd(path.join(pub, p)).includes('href="/privacy-policy/"'), 'PUBLISHED: footer links to policy on ' + p);
@@ -126,7 +126,7 @@ module.exports = evaluate(facts, true, false);\n`;
   ['test-regression.js', 'test-technical-seo.js'].forEach((s) => {
     let okRun = true;
     try { execSync('node scripts/' + s, { cwd: dirs[2], stdio: 'pipe' }); } catch (e) { okRun = false; console.error(String(e.stdout || '').split(/\r?\n/).filter((l) => /FAIL/.test(l)).join(' | ')); }
-    assert(okRun, 'PUBLISHED: ' + s + ' must pass with approved=true (expects 187 sitemap URLs)');
+    assert(okRun, 'PUBLISHED: ' + s + ' must pass with approved=true (expects 191 sitemap URLs)');
   });
 } catch (e) {
   fail++;

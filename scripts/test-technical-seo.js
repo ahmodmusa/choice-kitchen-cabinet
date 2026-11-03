@@ -82,7 +82,7 @@ assert(!sitemapPaths.includes('/404.html') && !sitemapPaths.includes('/404/'), '
 section('Sitemap integrity');
 const privacy = require('../_data/privacy.js');
 const PUBLISHED = privacy.mode === 'published';
-const EXPECTED_URLS = PUBLISHED ? 187 : 186; // 186 before privacy approval, 187 after
+const EXPECTED_URLS = PUBLISHED ? 191 : 190; // 190 before privacy approval, 191 after
 assert(sitemapUrls.length === EXPECTED_URLS, `sitemap must contain ${EXPECTED_URLS} URLs (privacy mode ${privacy.mode}), found ${sitemapUrls.length}`);
 assert(new Set(sitemapUrls).size === sitemapUrls.length, 'sitemap URLs must be unique');
 let badSitemap = 0;
@@ -129,27 +129,12 @@ htmlFiles.forEach((f) => {
 });
 assert(canonProblems === 0, `every page needs exactly one self-referencing, query-free canonical (${canonProblems} problems)`);
 
-section('Hreflang consistency (current ?lang= implementation — see docs/PHASE1_TECHNICAL_SEO_REPORT)');
+section('Hreflang (intentionally absent: ?lang= variants canonicalise to the clean URL)');
 let hrefProblems = 0;
-const LANGS = { 'en-MY': 'en', 'ms-MY': 'bm', 'zh-MY': 'zh', 'ta-MY': 'ta' };
 htmlFiles.forEach((f) => {
-  if (rel(f) === '404.html') return;
-  const h = read(f);
-  const tags = [...h.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)"/g)];
-  const url = ORIGIN + urlForFile(f);
-  const isArticle = /how-to-organize-kitchen-cabinets|calculating-kitchen-cabinet-space|tips-for-cleaning-kitchen-cabinets|privacy-policy/.test(url);
-  if (isArticle) {
-    if (tags.length) { hrefProblems++; console.error(`  article ${url} must not carry hreflang (single-language article)`); }
-    return;
-  }
-  if (tags.length !== 5) { hrefProblems++; console.error(`  ${url} has ${tags.length} hreflang tags (expected 5)`); return; }
-  const map = Object.fromEntries(tags.map((t) => [t[1], t[2]]));
-  for (const [code, lang] of Object.entries(LANGS)) {
-    if (map[code] !== `${url}?lang=${lang}`) { hrefProblems++; console.error(`  ${url} hreflang ${code} -> ${map[code]}`); }
-  }
-  if (map['x-default'] !== url) { hrefProblems++; console.error(`  ${url} x-default -> ${map['x-default']}`); }
+  if (/<link rel="alternate" hreflang=/.test(read(f))) { hrefProblems++; console.error('  unexpected hreflang link in ' + rel(f)); }
 });
-assert(hrefProblems === 0, `hreflang sets must be complete and consistent (${hrefProblems} problems)`);
+assert(hrefProblems === 0, `no page may declare hreflang pointing at non-canonical ?lang= URLs (${hrefProblems} problems)`);
 
 section('Structured data');
 let ldProblems = 0;
@@ -244,6 +229,60 @@ section('Phase 1C: restored cleaning article, privacy gate, legacy category');
   assert(!htmlFiles.some((f) => /OWNER TO CONFIRM|NOT APPROVED|YOUR_FACEBOOK_PIXEL_ID/.test(read(f))), 'no unfinished placeholder may appear in any built page');
   assert(!redirectSources.has('/privacy-policy/') && !redirectSources.has('/privacy-policy') && !redirectSources.has('/category/kitchen-cabinet/') && !redirectSources.has('/category/kitchen-cabinet'), 'privacy-policy and legacy category must not be redirected to the homepage');
   assert(!fs.existsSync(path.join(siteDir, 'category')), 'legacy /category/ has no equivalent page and must stay 404');
+}
+
+section('Growth release: guides, location metadata, same-name areas, conversion paths');
+{
+  const guides = ['kitchen-cabinet-guides', 'kitchen-cabinet-materials-malaysia', 'custom-vs-ready-made-kitchen-cabinets', 'small-kitchen-cabinet-ideas'];
+  guides.forEach((slug) => {
+    const fp = path.join(siteDir, slug, 'index.html');
+    const h = fs.existsSync(fp) ? read(fp) : '';
+    assert(h.includes('<link rel="canonical" href="' + ORIGIN + '/' + slug + '/">'), slug + ' must be built and self-canonical');
+    assert(sitemapPaths.includes('/' + slug + '/'), slug + ' must be in sitemap');
+    assert(!/(we tested|our testing|in our experience|we personally|\bRM\s?\d)/.test(h.replace(/<script[\s\S]*?<\/script>/g, '').replace(/<footer[\s\S]*?<\/footer>/, '')), slug + ' must contain no tested/experience claims or unverified prices');
+    assert(h.includes('wa.me/601124771710'), slug + ' must keep a WhatsApp path');
+  });
+  ['kitchen-cabinet-materials-malaysia', 'custom-vs-ready-made-kitchen-cabinets', 'small-kitchen-cabinet-ideas'].forEach((slug) => {
+    const h = read(path.join(siteDir, slug, 'index.html'));
+    let ok = false;
+    for (const b of h.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) { try { const o = JSON.parse(b[1]); if (o['@type'] === 'BlogPosting' && o.datePublished === '2026-11-04' && o.dateModified === '2026-11-04') ok = true; } catch (e) { /* caught by JSON-LD test */ } }
+    assert(ok, slug + ' needs BlogPosting JSON-LD with truthful dates');
+  });
+  // every article and location page links to the guides hub and the other guides
+  const hub = read(path.join(siteDir, 'index.html'));
+  assert(hub.includes('href="/kitchen-cabinet-guides/"'), 'homepage must link to the guides hub');
+  ['shah-alam/sungai-buloh', 'selayang/rawang', 'shah-alam', 'tips-for-cleaning-kitchen-cabinets'].forEach((p) => {
+    const h = read(path.join(siteDir, p, 'index.html'));
+    assert(h.includes('href="/kitchen-cabinet-materials-malaysia/"') && h.includes('href="/kitchen-cabinet-guides/"'), p + ' must carry the related-guides links');
+  });
+  // duplicate-named areas stay separate URLs, differentiated and cross-linked
+  const dup = { 'shah-alam/sungai-buloh': 'petaling-jaya/sungai-buloh', 'petaling-jaya/sungai-buloh': 'shah-alam/sungai-buloh', 'kuala-lumpur/kepong': 'selayang/kepong', 'selayang/kepong': 'kuala-lumpur/kepong', 'kuala-lumpur/cheras': 'hulu-langat/cheras', 'hulu-langat/cheras': 'kuala-lumpur/cheras' };
+  const titles = new Set();
+  Object.entries(dup).forEach(([p, other]) => {
+    const h = read(path.join(siteDir, p, 'index.html'));
+    assert(h.includes('href="/' + other + '/"') && /also appears under/.test(h), p + ' must cross-link its same-name area ' + other);
+    const tt = (h.match(/<title>([^<]*)/) || [])[1];
+    assert(!titles.has(tt), p + ' must have a title distinct from its same-name area');
+    titles.add(tt);
+    assert(h.includes('<link rel="canonical" href="' + ORIGIN + '/' + p + '/">'), p + ' must stay self-canonical (no consolidation)');
+  });
+  // titles/descriptions of all pages: unique, sane length
+  const seenTitle = new Map(); let badTitle = 0;
+  htmlFiles.forEach((f) => {
+    if (rel(f) === '404.html') return;
+    const h = read(f);
+    const tt = (h.match(/<title>([^<]*)/) || [])[1] || '';
+    const dd = (h.match(/<meta name="description" content="([^"]*)"/) || [])[1] || '';
+    if (!tt || tt.length > 95 || !dd || dd.length < 60 || dd.length > 320) { badTitle++; console.error('  title/description length issue: ' + rel(f) + ' (' + tt.length + '/' + dd.length + ')'); }
+    if (seenTitle.has(tt)) { badTitle++; console.error('  duplicate title: ' + tt + ' | ' + rel(f) + ' & ' + seenTitle.get(tt)); } else seenTitle.set(tt, rel(f));
+  });
+  assert(badTitle === 0, 'all titles unique, non-empty and bounded; descriptions present (' + badTitle + ' problems)');
+  // performance hints on the homepage LCP image and responsive gallery images
+  assert(/<img[^>]*hero-image-1\.jpg[^>]*fetchpriority="high"/.test(hub), 'homepage hero image must be fetchpriority=high');
+  assert(!/<link href="https:\/\/fonts\.googleapis\.com[^>]*rel="stylesheet">/.test(hub.replace(/<noscript>[\s\S]*?<\/noscript>/g, '')), 'Google Fonts stylesheet must not be render-blocking');
+  const imgs = new Set(); htmlFiles.forEach((f) => { for (const m of read(f).matchAll(/(?:src|srcset)="(\/assets\/images\/[^"\s,]+)/g)) imgs.add(m[1].split('?')[0]); });
+  const missing = [...imgs].filter((p) => !fs.existsSync(path.join(siteDir, p)));
+  assert(missing.length === 0, 'all referenced images (incl. srcset variants) exist: ' + missing.join(','));
 }
 
 console.log(`\n=== TECHNICAL SEO TESTS: ${pass} passed, ${fail} failed ===`);

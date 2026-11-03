@@ -1,0 +1,22 @@
+---
+layout: default.njk
+title: Kitchen Cabinet Guides | Materials, Measuring, Cleaning & Storage
+description: "Practical kitchen cabinet guides for Malaysian homes - materials, custom vs ready-made, measuring, small kitchens, organizing and cleaning."
+permalink: /kitchen-cabinet-guides/index.html
+isArticle: true
+city: null
+area: null
+---
+{% include 'breadcrumbs.njk' %}
+<section class="seo-article" style="background: var(--warm-white); padding: 60px 8%;">
+  <div class="seo-article-content" style="max-width: 860px; margin: 0 auto;">
+    <h1 style="font-family: var(--serif); font-size: clamp(30px, 4vw, 44px); color: var(--walnut); line-height: 1.25; margin-bottom: 16px;">Kitchen Cabinet Guides</h1>
+    <p style="font-size: 18px; line-height: 1.8; color: var(--text-body); margin-bottom: 28px;">Practical, plain-language guides to help you plan, choose, measure and look after kitchen cabinets.</p>
+    <ul style="list-style: none; padding: 0; display: grid; gap: 18px;">
+      {% for g in guides %}
+      <li><a href="{{ g.url }}" style="font-family: var(--serif); font-size: 22px; color: var(--copper); font-weight: 600;">{{ g.title }}</a><br><span style="color: var(--text-body);">{{ g.blurb }}</span></li>
+      {% endfor %}
+    </ul>
+    <p style="margin-top: 32px; color: var(--text-body);">Ready to talk about your kitchen? <a href="/contact-us/" style="color: var(--copper); font-weight: 600;">Contact us</a> or browse the <a href="/area-coverage/" style="color: var(--copper); font-weight: 600;">areas we serve</a>.</p>
+  </div>
+</section>

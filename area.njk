@@ -98,7 +98,11 @@ eleventyComputed:
   </div>
 </section>
 
+{% if area.sameName.length %}
+<section class="section" style="background: var(--warm-white); padding-top: 24px; padding-bottom: 24px;"><p style="text-align:center;max-width:760px;margin:0 auto;">{{ area.name }} also appears under {% for s in area.sameName %}<a href="{{ s.url }}" style="color: var(--copper); font-weight: 600;">{{ s.cityName }}</a>{% if not loop.last %}, {% endif %}{% endfor %}. This page covers homes in the {{ area.name }} area as served from {{ area.city.name }}.</p></section>
+{% endif %}
 {% include 'seo-extras.njk' %}
+{% include 'related-guides.njk' %}
 
 <section class="cta-banner">
   <h2><span data-lang="en">Ready for Your Dream Kitchen in {{ area.name }}?</span><span data-lang="bm">Bersedia untuk Dapur Impian Anda di {{ area.name }}?</span><span data-lang="zh">准备好打造 {{ area.name }} 的梦想厨房了吗？</span><span data-lang="ta">{{ area.name }} இல் உங்கள் கனவு சமையலறைக்கு தயாரா?</span></h2>
