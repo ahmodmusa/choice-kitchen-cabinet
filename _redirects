@@ -1,7 +1,7 @@
 # Legacy WordPress URLs that now exist under a corrected Eleventy slug (same area/location).
 # Only exact, same-topic mappings are listed. Other legacy URLs
-# (e.g. /tips-for-cleaning-kitchen-cabinets/, /privacy-policy/, /category/*) are intentionally NOT
-# redirected to the homepage; they return the real 404 page.
+# (e.g. /category/kitchen-cabinet/) are intentionally NOT redirected to the homepage; they return the real 404
+# page. /tips-for-cleaning-kitchen-cabinets/ and /privacy-policy/ are real pages (not redirects).
 /petaling-jaya/best-price-kitchen-cabinets-in-ara-damansara-month-year   /petaling-jaya/ara-damansara/   301
 /petaling-jaya/best-price-kitchen-cabinets-in-ara-damansara-month-year/  /petaling-jaya/ara-damansara/   301
 /petaling-jaya/best-price-kitchen-cabinets-in-kota-damansara-month-year   /petaling-jaya/kota-damansara/   301

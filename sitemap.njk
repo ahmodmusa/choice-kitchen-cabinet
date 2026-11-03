@@ -28,6 +28,16 @@ eleventyExcludeFromCollections: true
     <loc>{{ site.url }}/calculating-kitchen-cabinet-space/</loc>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>{{ site.url }}/tips-for-cleaning-kitchen-cabinets/</loc>
+    <priority>0.7</priority>
+  </url>
+  {% if privacy.mode == "published" %}
+  <url>
+    <loc>{{ site.url }}/privacy-policy/</loc>
+    <priority>0.3</priority>
+  </url>
+  {% endif %}
   {% for city in locations.cities %}
   <url>
     <loc>{{ site.url }}/{{ city.slug }}/</loc>

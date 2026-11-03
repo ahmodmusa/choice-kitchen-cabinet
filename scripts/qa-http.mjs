@@ -4,7 +4,7 @@ const SITE = process.env.SITE;
 const BASE = (process.env.BASE_URL || '').replace(/\/$/, '');
 const PROFILES = {
   choice: {
-    origin: 'https://www.mychoicecabinet.com', sitemap: '/sitemap.xml', expectUrls: 185,
+    origin: 'https://www.mychoicecabinet.com', sitemap: '/sitemap.xml', expectUrls: 186,
     ga: 'G-WY69TY8LTH', wa: 'wa.me/601124771710', tel: 'tel:+60178360455', mail: 'mailto:admin@mychoicecabinet.com',
     hreflang: 'choice',
     legacy: {
@@ -15,8 +15,8 @@ const PROFILES = {
       '/sepang/seri-kembangan-south-sepang-utara/': '/sepang/seri-kembangan-south/',
       '/sepang/kota-warisan-2/': '/sepang/kota-warisan/'
     },
-    notFound: ['/nonexistent-xyz/', '/blog/', '/assets/missing.jpg'],
-    separately: ['/privacy-policy/', '/tips-for-cleaning-kitchen-cabinets/'],
+    notFound: ['/nonexistent-xyz/', '/blog/', '/assets/missing.jpg', '/privacy-policy/', '/category/kitchen-cabinet/'],
+    separately: [],
     protect: ['/klang/port-klang/', '/shah-alam/sungai-buloh/', '/selayang/rawang/', '/kuala-lumpur/wangsa-maju/', '/selayang/gombak/', '/subang-jaya/puchong/', '/petaling-jaya/petaling-jaya-city-centre/']
   },
   orked: {
@@ -72,7 +72,7 @@ for (const [p, h] of Object.entries(pages)) {
   }
   const tags = [...h.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)"/g)].map((m) => [m[1], m[2]]);
   if (P.hreflang === 'choice') {
-    const article = /how-to-organize|calculating-kitchen/.test(p);
+    const article = /how-to-organize|calculating-kitchen|tips-for-cleaning/.test(p);
     const exp = article ? 0 : 5;
     if (tags.length === exp && (article || tags.find((t) => t[0] === 'x-default')[1] === P.origin + p)) hre++; else ok(false, `hreflang ${p}: ${tags.length} tags`);
   } else {

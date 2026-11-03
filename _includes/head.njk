@@ -31,7 +31,7 @@
 <meta name="twitter:description" content="{{ description }}">
 <meta name="twitter:image" content="{{ site.url }}/assets/images/og-image.png">
 
-{% if isNotFound %}
+{% if isNotFound or privacyDraft %}
 <meta name="robots" content="noindex">
 {% else %}
 <!-- Canonical URL -->

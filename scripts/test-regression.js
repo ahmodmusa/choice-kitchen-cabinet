@@ -167,7 +167,7 @@ assert(fs.existsSync(sitemapPath), 'sitemap.xml must exist in _site');
 
 const sitemapContent = fs.readFileSync(sitemapPath, 'utf8');
 const sitemapUrls = [...sitemapContent.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
-assert(sitemapUrls.length === 185, `Expected 185 sitemap URLs, found ${sitemapUrls.length}`);
+assert(sitemapUrls.length === 186, `Expected 186 sitemap URLs, found ${sitemapUrls.length}`);
 console.log(`PASS: sitemap.xml contains exactly ${sitemapUrls.length} canonical URLs.`);
 
 // Verify both historical blog posts exist in sitemap

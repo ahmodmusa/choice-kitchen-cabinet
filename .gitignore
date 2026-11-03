@@ -2,3 +2,5 @@ _site/
 node_modules/
 data-exports/
 *.log
+
+.privacy-preview/

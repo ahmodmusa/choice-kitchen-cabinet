@@ -1,0 +1,160 @@
+---
+layout: default.njk
+title: Privacy Policy | Dasar Privasi
+description: How Choice Kitchen Cabinet collects and uses personal data through this website, WhatsApp, phone and email enquiries. Dasar Privasi dalam Bahasa Malaysia disertakan.
+isArticle: true
+city: null
+area: null
+---
+{% include 'breadcrumbs.njk' %}
+
+<section class="seo-article" style="background: var(--warm-white); padding: 60px 8%;">
+  <div class="seo-article-content" style="max-width: 860px; margin: 0 auto;">
+
+    {% if privacyDraft %}
+    <div style="background:#fff3cd;border:2px solid #b8860b;border-radius:8px;padding:16px 20px;margin-bottom:28px;color:#4d3b00;font-size:15px;line-height:1.6;">
+      <strong>DRAFT &mdash; NOT APPROVED &mdash; NOT PUBLISHED.</strong> Owner review preview only. Items marked <em>[OWNER TO CONFIRM]</em> must be completed and the text approved before this page is published. This page is set to noindex and is excluded from the sitemap.
+    </div>
+    {% endif %}
+
+    <header style="margin-bottom: 32px; border-bottom: 1px solid rgba(61,43,31,0.1); padding-bottom: 24px;">
+      <h1 style="font-family: var(--serif); font-size: clamp(30px, 4vw, 42px); color: var(--walnut); line-height: 1.25; margin-bottom: 12px;">Privacy Policy / Dasar Privasi</h1>
+      <p style="font-size: 15px; color: var(--warm-gray); margin-bottom: 12px;">
+        Effective / Berkuat kuasa: {{ privacy.facts.effectiveDate }}
+      </p>
+      <p style="font-size: 15px; margin: 0;">
+        <a href="#english" style="color: var(--copper); font-weight: 600;">English</a> &nbsp;|&nbsp;
+        <a href="#bahasa-malaysia" style="color: var(--copper); font-weight: 600;">Bahasa Malaysia</a>
+      </p>
+    </header>
+
+    <!-- ===================== ENGLISH ===================== -->
+    <div id="english" lang="en" style="color: var(--text-body); font-size: 16px; line-height: 1.8;">
+      <h2 style="font-family: var(--serif); font-size: 28px; color: var(--walnut); margin: 0 0 16px;">Privacy Policy (English)</h2>
+
+      <p>This notice explains how personal data is handled when you visit <strong>mychoicecabinet.com</strong> (the &ldquo;Website&rdquo;) or contact us about kitchen cabinets. It is provided under the Personal Data Protection Act 2010 of Malaysia (&ldquo;PDPA&rdquo;). A Bahasa Malaysia version follows below.</p>
+
+      <h3 style="font-family: var(--serif); font-size: 21px; color: var(--walnut); margin: 28px 0 10px;">1. Who we are</h3>
+      <p>The Website is operated by <strong>{{ privacy.facts.legalEntityName }}</strong>, trading as {{ site.name }} (&ldquo;we&rdquo;, &ldquo;us&rdquo;).<br>
+      Address: {{ site.address.streetAddress }}, {{ site.address.postalCode }} {{ site.address.addressLocality }}, {{ site.address.addressRegion }}, Malaysia.<br>
+      Telephone: <a href="tel:{{ site.phone }}">+60 17-836 0455</a> &middot; Email: <a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+
+      <h3 style="font-family: var(--serif); font-size: 21px; color: var(--walnut); margin: 28px 0 10px;">2. What personal data we collect and how</h3>
+      <p><strong>(a) Information you give us when you enquire.</strong> The Website has no online forms. If you contact us for a quotation, you do so by WhatsApp message, telephone call or email. Depending on what you choose to share, this may include your name, telephone number, email address, the address or area of your home, kitchen measurements, photos or floor plans, and your preferences and budget. Clicking a WhatsApp link on the Website opens the WhatsApp app with a pre-written message that you can edit before sending.</p>
+      <p><strong>(b) Information collected automatically.</strong> When you visit the Website, our analytics tool (Google Analytics 4) collects usage information such as the pages you view, the device, browser and approximate location from which you visit, and how you arrived at the Website. The Website also records when a WhatsApp, telephone or email link is clicked, as an analytics event; it does not record the content of your message or call. Google Analytics may use cookies or similar technologies for this purpose.</p>
+      <p><strong>(c) Technical data.</strong> Our hosting provider ({{ privacy.facts.hostingProvider }}) processes technical information needed to deliver the Website, such as your IP address, browser type and the pages requested, and may keep server logs for security and reliability.</p>
+      <p><strong>(d) Cookies and storage of the Website itself.</strong> The Website's own code does not set cookies or use browser local storage. Choosing a language adds a <code>?lang=</code> parameter to the page address. Third-party services described below may set their own cookies.</p>
+      <p>Providing personal data is voluntary. If you do not provide the information we need, we may be unable to prepare a quotation.</p>
+
+      <h3 style="font-family: var(--serif); font-size: 21px; color: var(--walnut); margin: 28px 0 10px;">3. Why we use your data</h3>
+      <ul style="padding-left: 24px;">
+        <li>to respond to your enquiry and prepare design advice and quotations;</li>
+        <li>to communicate with you about your enquiry or project (by WhatsApp, telephone or email);</li>
+        <li>to understand how the Website is used and to improve it (analytics);</li>
+        <li>to keep the Website secure and working properly; and</li>
+        <li>to comply with legal obligations.</li>
+      </ul>
+
+      <h3 style="font-family: var(--serif); font-size: 21px; color: var(--walnut); margin: 28px 0 10px;">4. Third parties and international transfers</h3>
+      <p>We use the following third-party services. They may process data outside Malaysia.</p>
+      <ul style="padding-left: 24px;">
+        <li><strong>Google Analytics 4 / Google Tag Manager</strong> (Google) &mdash; website analytics.</li>
+        <li><strong>Google Fonts</strong> (Google) &mdash; your browser requests font files from Google when pages load, which discloses your IP address to Google.</li>
+        <li><strong>Google Maps</strong> (Google) &mdash; a map embedded in the page footer; loading it discloses your IP address to Google.</li>
+        <li><strong>WhatsApp</strong> (Meta) &mdash; if you contact us on WhatsApp, your messages are handled under WhatsApp's own terms and privacy policy.</li>
+        <li><strong>{{ privacy.facts.hostingProvider }}</strong> &mdash; website hosting and delivery.</li>
+      </ul>
+      <p>The Website also links to our pages on Facebook, YouTube, LinkedIn and TikTok. Those platforms have their own privacy policies and only receive data about you if you click through to them.</p>
+      <p>We do not sell your personal data. We do not disclose your enquiry details to other parties except where needed to provide our services (for example, to our installation team), or where required by law.</p>
+
+      <h3 style="font-family: var(--serif); font-size: 21px; color: var(--walnut); margin: 28px 0 10px;">5. How long we keep your data</h3>
+      <p><strong>Enquiry and project records:</strong> {{ privacy.facts.enquiryRetention }}<br>
+      <strong>Analytics data:</strong> {{ privacy.facts.analyticsRetention }}</p>
+
+      <h3 style="font-family: var(--serif); font-size: 21px; color: var(--walnut); margin: 28px 0 10px;">6. Your rights</h3>
+      <p>Under the PDPA you may ask us to:</p>
+      <ul style="padding-left: 24px;">
+        <li>confirm whether we hold personal data about you and give you access to it;</li>
+        <li>correct personal data that is inaccurate, incomplete or out of date;</li>
+        <li>stop or limit our use of your personal data, and withdraw any consent you gave us; and</li>
+        <li>stop using your data for direct marketing.</li>
+      </ul>
+      <p>To make a request, contact us at <a href="mailto:{{ privacy.facts.privacyContactEmail }}">{{ privacy.facts.privacyContactEmail }}</a>{% if privacy.facts.privacyContactPhone and privacy.facts.privacyContactPhone != 'none' %} or {{ privacy.facts.privacyContactPhone }}{% endif %}. We may need to verify your identity first, and some requests may be limited as permitted by law. If you are not satisfied with our response, you may complain to the Personal Data Protection Commissioner of Malaysia (Jabatan Perlindungan Data Peribadi).</p>
+
+      <h3 style="font-family: var(--serif); font-size: 21px; color: var(--walnut); margin: 28px 0 10px;">7. Managing analytics and cookies</h3>
+      <p>You can block or delete cookies through your browser settings, or install Google's Analytics opt-out browser add-on. Doing so does not stop you from using the Website.</p>
+
+      <h3 style="font-family: var(--serif); font-size: 21px; color: var(--walnut); margin: 28px 0 10px;">8. Changes to this notice</h3>
+      <p>We may update this notice from time to time. The effective date above shows the latest version.</p>
+
+      <h3 style="font-family: var(--serif); font-size: 21px; color: var(--walnut); margin: 28px 0 10px;">9. Language</h3>
+      <p>This notice is provided in English and Bahasa Malaysia. If you would like help understanding it, contact us using the details above.</p>
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid rgba(61,43,31,0.12); margin: 48px 0;">
+
+    <!-- ===================== BAHASA MALAYSIA ===================== -->
+    <div id="bahasa-malaysia" lang="ms" style="color: var(--text-body); font-size: 16px; line-height: 1.8;">
+      <h2 style="font-family: var(--serif); font-size: 28px; color: var(--walnut); margin: 0 0 16px;">Dasar Privasi (Bahasa Malaysia)</h2>
+
+      <p>Notis ini menerangkan cara data peribadi dikendalikan apabila anda melawat <strong>mychoicecabinet.com</strong> (&ldquo;Laman Web&rdquo;) atau menghubungi kami mengenai kabinet dapur. Notis ini disediakan di bawah Akta Perlindungan Data Peribadi 2010 Malaysia (&ldquo;PDPA&rdquo;). Versi Bahasa Inggeris terdapat di atas.</p>
+
+      <h3 style="font-family: var(--serif); font-size: 21px; color: var(--walnut); margin: 28px 0 10px;">1. Siapa kami</h3>
+      <p>Laman Web ini dikendalikan oleh <strong>{{ privacy.facts.legalEntityName }}</strong>, yang berniaga sebagai {{ site.name }} (&ldquo;kami&rdquo;).<br>
+      Alamat: {{ site.address.streetAddress }}, {{ site.address.postalCode }} {{ site.address.addressLocality }}, {{ site.address.addressRegion }}, Malaysia.<br>
+      Telefon: <a href="tel:{{ site.phone }}">+60 17-836 0455</a> &middot; E-mel: <a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+
+      <h3 style="font-family: var(--serif); font-size: 21px; color: var(--walnut); margin: 28px 0 10px;">2. Data peribadi yang kami kumpul dan cara pengumpulannya</h3>
+      <p><strong>(a) Maklumat yang anda berikan semasa membuat pertanyaan.</strong> Laman Web ini tidak mempunyai borang dalam talian. Jika anda menghubungi kami untuk sebut harga, anda melakukannya melalui mesej WhatsApp, panggilan telefon atau e-mel. Bergantung pada apa yang anda pilih untuk kongsi, ini mungkin termasuk nama, nombor telefon, alamat e-mel, alamat atau kawasan rumah, ukuran dapur, gambar atau pelan lantai, serta pilihan dan bajet anda. Menekan pautan WhatsApp di Laman Web akan membuka aplikasi WhatsApp dengan mesej yang telah ditulis terlebih dahulu dan boleh anda ubah sebelum dihantar.</p>
+      <p><strong>(b) Maklumat yang dikumpul secara automatik.</strong> Apabila anda melawat Laman Web, alat analitik kami (Google Analytics 4) mengumpul maklumat penggunaan seperti halaman yang dilihat, peranti, pelayar dan lokasi anggaran lawatan anda, serta cara anda tiba di Laman Web. Laman Web juga merekodkan apabila pautan WhatsApp, telefon atau e-mel ditekan sebagai peristiwa analitik; kandungan mesej atau panggilan anda tidak direkodkan. Google Analytics mungkin menggunakan kuki atau teknologi serupa untuk tujuan ini.</p>
+      <p><strong>(c) Data teknikal.</strong> Penyedia pengehosan kami ({{ privacy.facts.hostingProvider }}) memproses maklumat teknikal yang diperlukan untuk menyampaikan Laman Web, seperti alamat IP, jenis pelayar dan halaman yang diminta, dan mungkin menyimpan log pelayan untuk keselamatan dan kebolehpercayaan.</p>
+      <p><strong>(d) Kuki dan storan oleh Laman Web sendiri.</strong> Kod Laman Web ini sendiri tidak menetapkan kuki dan tidak menggunakan storan setempat pelayar. Memilih bahasa menambah parameter <code>?lang=</code> pada alamat halaman. Perkhidmatan pihak ketiga yang diterangkan di bawah mungkin menetapkan kuki mereka sendiri.</p>
+      <p>Pemberian data peribadi adalah secara sukarela. Jika anda tidak memberikan maklumat yang kami perlukan, kami mungkin tidak dapat menyediakan sebut harga.</p>
+
+      <h3 style="font-family: var(--serif); font-size: 21px; color: var(--walnut); margin: 28px 0 10px;">3. Tujuan kami menggunakan data anda</h3>
+      <ul style="padding-left: 24px;">
+        <li>untuk menjawab pertanyaan anda serta menyediakan nasihat reka bentuk dan sebut harga;</li>
+        <li>untuk berhubung dengan anda mengenai pertanyaan atau projek anda (melalui WhatsApp, telefon atau e-mel);</li>
+        <li>untuk memahami cara Laman Web digunakan dan memperbaikinya (analitik);</li>
+        <li>untuk memastikan Laman Web selamat dan berfungsi dengan baik; dan</li>
+        <li>untuk mematuhi kewajipan undang-undang.</li>
+      </ul>
+
+      <h3 style="font-family: var(--serif); font-size: 21px; color: var(--walnut); margin: 28px 0 10px;">4. Pihak ketiga dan pemindahan antarabangsa</h3>
+      <p>Kami menggunakan perkhidmatan pihak ketiga berikut. Mereka mungkin memproses data di luar Malaysia.</p>
+      <ul style="padding-left: 24px;">
+        <li><strong>Google Analytics 4 / Google Tag Manager</strong> (Google) &mdash; analitik laman web.</li>
+        <li><strong>Google Fonts</strong> (Google) &mdash; pelayar anda meminta fail fon daripada Google semasa halaman dimuatkan, yang mendedahkan alamat IP anda kepada Google.</li>
+        <li><strong>Google Maps</strong> (Google) &mdash; peta yang dibenamkan pada bahagian bawah halaman; memuatkannya mendedahkan alamat IP anda kepada Google.</li>
+        <li><strong>WhatsApp</strong> (Meta) &mdash; jika anda menghubungi kami melalui WhatsApp, mesej anda dikendalikan mengikut terma dan dasar privasi WhatsApp sendiri.</li>
+        <li><strong>{{ privacy.facts.hostingProvider }}</strong> &mdash; pengehosan dan penghantaran laman web.</li>
+      </ul>
+      <p>Laman Web juga mengandungi pautan ke halaman kami di Facebook, YouTube, LinkedIn dan TikTok. Platform tersebut mempunyai dasar privasi sendiri dan hanya menerima data tentang anda jika anda menekan pautan ke sana.</p>
+      <p>Kami tidak menjual data peribadi anda. Kami tidak mendedahkan butiran pertanyaan anda kepada pihak lain kecuali jika perlu untuk menyediakan perkhidmatan kami (contohnya kepada pasukan pemasangan kami), atau jika dikehendaki oleh undang-undang.</p>
+
+      <h3 style="font-family: var(--serif); font-size: 21px; color: var(--walnut); margin: 28px 0 10px;">5. Tempoh kami menyimpan data anda</h3>
+      <p><strong>Rekod pertanyaan dan projek:</strong> {{ privacy.facts.enquiryRetention }}<br>
+      <strong>Data analitik:</strong> {{ privacy.facts.analyticsRetention }}</p>
+
+      <h3 style="font-family: var(--serif); font-size: 21px; color: var(--walnut); margin: 28px 0 10px;">6. Hak anda</h3>
+      <p>Di bawah PDPA, anda boleh meminta kami untuk:</p>
+      <ul style="padding-left: 24px;">
+        <li>mengesahkan sama ada kami menyimpan data peribadi tentang anda dan memberikan akses kepadanya;</li>
+        <li>membetulkan data peribadi yang tidak tepat, tidak lengkap atau sudah lapuk;</li>
+        <li>menghentikan atau menghadkan penggunaan data peribadi anda, dan menarik balik persetujuan yang pernah anda berikan; dan</li>
+        <li>menghentikan penggunaan data anda untuk pemasaran terus.</li>
+      </ul>
+      <p>Untuk membuat permintaan, hubungi kami di <a href="mailto:{{ privacy.facts.privacyContactEmail }}">{{ privacy.facts.privacyContactEmail }}</a>{% if privacy.facts.privacyContactPhone and privacy.facts.privacyContactPhone != 'none' %} atau {{ privacy.facts.privacyContactPhone }}{% endif %}. Kami mungkin perlu mengesahkan identiti anda terlebih dahulu, dan sesetengah permintaan mungkin dihadkan seperti yang dibenarkan oleh undang-undang. Jika anda tidak berpuas hati dengan maklum balas kami, anda boleh membuat aduan kepada Pesuruhjaya Perlindungan Data Peribadi Malaysia (Jabatan Perlindungan Data Peribadi).</p>
+
+      <h3 style="font-family: var(--serif); font-size: 21px; color: var(--walnut); margin: 28px 0 10px;">7. Mengurus analitik dan kuki</h3>
+      <p>Anda boleh menyekat atau memadam kuki melalui tetapan pelayar anda, atau memasang alat tambah pelayar penarikan diri Google Analytics. Berbuat demikian tidak menghalang anda daripada menggunakan Laman Web.</p>
+
+      <h3 style="font-family: var(--serif); font-size: 21px; color: var(--walnut); margin: 28px 0 10px;">8. Perubahan pada notis ini</h3>
+      <p>Kami mungkin mengemas kini notis ini dari semasa ke semasa. Tarikh berkuat kuasa di atas menunjukkan versi terkini.</p>
+
+      <h3 style="font-family: var(--serif); font-size: 21px; color: var(--walnut); margin: 28px 0 10px;">9. Bahasa</h3>
+      <p>Notis ini disediakan dalam Bahasa Inggeris dan Bahasa Malaysia. Jika anda memerlukan bantuan untuk memahaminya, sila hubungi kami menggunakan butiran di atas.</p>
+    </div>
+
+  </div>
+</section>

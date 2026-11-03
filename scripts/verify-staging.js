@@ -18,7 +18,7 @@ async function get(p) {
 
 (async () => {
   // 1. Unknown URLs must be real 404s (never 200 + homepage)
-  for (const p of ['/nonexistent-xyz/', '/blog/', '/tips-for-cleaning-kitchen-cabinets/', '/privacy-policy/', '/assets/missing.jpg']) {
+  for (const p of ['/nonexistent-xyz/', '/blog/', '/privacy-policy/', '/category/kitchen-cabinet/', '/assets/missing.jpg']) {
     const r = await get(p);
     ok(r.status === 404, `${p} should be 404, got ${r.status}`);
   }
@@ -49,7 +49,7 @@ async function get(p) {
   const smRes = await get('/sitemap.xml');
   ok(smRes.status === 200, 'sitemap.xml should be 200');
   const urls = [...(await smRes.text()).matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1].replace(ORIGIN, ''));
-  ok(urls.length === 185, `sitemap should list 185 URLs, found ${urls.length}`);
+  ok(urls.length === 186, `sitemap should list 186 URLs, found ${urls.length}`);
   let bad = 0;
   for (const u of urls) {
     const r = await get(u);

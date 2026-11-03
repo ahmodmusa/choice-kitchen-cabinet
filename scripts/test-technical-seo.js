@@ -80,7 +80,7 @@ if (fs.existsSync(nf)) {
 assert(!sitemapPaths.includes('/404.html') && !sitemapPaths.includes('/404/'), '404 page must not be in sitemap.xml');
 
 section('Sitemap integrity');
-assert(sitemapUrls.length === 185, `sitemap must contain 185 URLs, found ${sitemapUrls.length}`);
+assert(sitemapUrls.length === 186, `sitemap must contain 186 URLs, found ${sitemapUrls.length}`);
 assert(new Set(sitemapUrls).size === sitemapUrls.length, 'sitemap URLs must be unique');
 let badSitemap = 0;
 sitemapUrls.forEach((u) => {
@@ -134,7 +134,7 @@ htmlFiles.forEach((f) => {
   const h = read(f);
   const tags = [...h.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)"/g)];
   const url = ORIGIN + urlForFile(f);
-  const isArticle = /how-to-organize-kitchen-cabinets|calculating-kitchen-cabinet-space/.test(url);
+  const isArticle = /how-to-organize-kitchen-cabinets|calculating-kitchen-cabinet-space|tips-for-cleaning-kitchen-cabinets|privacy-policy/.test(url);
   if (isArticle) {
     if (tags.length) { hrefProblems++; console.error(`  article ${url} must not carry hreflang (single-language article)`); }
     return;
@@ -205,6 +205,33 @@ htmlFiles.forEach((f) => {
 assert(convProblems === 0, `all pages must keep WhatsApp and tel: paths (${convProblems} problems)`);
 assert(read(path.join(siteDir, 'contact-us', 'index.html')).includes('mailto:admin@mychoicecabinet.com'), 'contact page must keep mailto link');
 assert(/wa\.me\/601124771710/.test(read(nf)), '404 page header must keep the WhatsApp CTA');
+
+section('Phase 1C: restored cleaning article, privacy gate, legacy category');
+{
+  const slug = 'tips-for-cleaning-kitchen-cabinets';
+  const fp = path.join(siteDir, slug, 'index.html');
+  assert(fs.existsSync(fp), 'cleaning article page must be built');
+  const h = fs.existsSync(fp) ? read(fp) : '';
+  assert(h.includes('<link rel="canonical" href="' + ORIGIN + '/' + slug + '/">'), 'cleaning article must be self-canonical');
+  assert(sitemapPaths.includes('/' + slug + '/'), 'cleaning article must be in sitemap.xml');
+  assert(!/name="robots"[^>]*noindex/.test(h), 'cleaning article must be indexable');
+  assert(!/hreflang=/.test(h), 'cleaning article must not carry hreflang (single-language article)');
+  let j = null;
+  for (const b of h.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) { try { const o = JSON.parse(b[1]); if (o['@type'] === 'BlogPosting') j = o; } catch (e) { /* parse failures are caught by the JSON-LD test above */ } }
+  assert(j && j['@type'] === 'BlogPosting' && j.datePublished === '2024-05-16' && /^\d{4}-\d{2}-\d{2}$/.test(j.dateModified) && j.dateModified >= j.datePublished, 'cleaning article needs BlogPosting JSON-LD with original datePublished 2024-05-16 and a valid dateModified');
+  assert(j && j.mainEntityOfPage && j.mainEntityOfPage['@id'] === ORIGIN + '/' + slug + '/', 'cleaning article JSON-LD mainEntityOfPage must be the canonical URL');
+  ['/how-to-organize-kitchen-cabinets/', '/calculating-kitchen-cabinet-space/', '/area-coverage/', '/contact-us/'].forEach((l) => assert(h.includes('href="' + l + '"'), 'cleaning article must link to ' + l));
+  assert(!/(we tested|our testing|in our experience|we personally)/i.test(h), 'cleaning article must not claim testing or personal experience');
+  assert(read(path.join(siteDir, 'index.html')).includes('href="/' + slug + '/"'), 'footer must link to the cleaning article');
+  assert(!redirectSources.has('/' + slug + '/') && !redirectSources.has('/' + slug), 'cleaning article must not be redirected');
+
+  // Privacy policy is gated: in the default build it must not exist anywhere (see _data/privacy.js)
+  assert(!fs.existsSync(path.join(siteDir, 'privacy-policy')), 'privacy policy must NOT be built until the owner approves it');
+  assert(!sitemapPaths.includes('/privacy-policy/'), 'unapproved privacy policy must not be in sitemap');
+  assert(!htmlFiles.some((f) => /href="\/privacy-policy\/"/.test(read(f))), 'no page may link to an unpublished privacy policy');
+  assert(!redirectSources.has('/privacy-policy/') && !redirectSources.has('/privacy-policy') && !redirectSources.has('/category/kitchen-cabinet/') && !redirectSources.has('/category/kitchen-cabinet'), 'privacy-policy and legacy category must not be redirected to the homepage');
+  assert(!fs.existsSync(path.join(siteDir, 'category')), 'legacy /category/ has no equivalent page and must stay 404');
+}
 
 console.log(`\n=== TECHNICAL SEO TESTS: ${pass} passed, ${fail} failed ===`);
 process.exit(fail ? 1 : 0);
